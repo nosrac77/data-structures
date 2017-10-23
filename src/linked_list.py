@@ -11,7 +11,6 @@ class LinkedList(object):
     def push(self, val):
         """Create push method of LinkedList."""
         self.head = Node(val, self.head)
-        return self.head
 
     #
     # def pop(val):
