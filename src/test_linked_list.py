@@ -17,8 +17,7 @@ def test_push():
     from linked_list import Node
     test_list = LinkedList()
     test_list.push(5)
-    assert test_list.head == Node(5, test_list.head)
-    assert test_list.head is not None
+    assert test_list.head.data == 5
 
 # @pytest.mark.parametrize('n, result', FIB_NUMBERS)
 # def test_fibonacci(n, result):
