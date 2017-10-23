@@ -4,10 +4,13 @@
 class LinkedList(object):
 
     def __init__(self):
+        """Initializing LinkedList class."""
         self.head = None
 
     def push(self, val):
+        """Create push method of LinkedList."""
         self.head = Node(val, self.head)
+        return self.head
 
     #
     # def pop(val):
@@ -28,6 +31,8 @@ class LinkedList(object):
 
 
 class Node(object):
+    """Creating Node class."""
+
     def __init__(self, data, next):
         self.data = data
         self.next = next
