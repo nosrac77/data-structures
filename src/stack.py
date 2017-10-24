@@ -1,6 +1,5 @@
 """Stack class function."""
 from linked_list import LinkedList
-from linked_list import Node
 
 
 class Stack(object):
@@ -21,7 +20,7 @@ class Stack(object):
     def pop(self):
         """Utilize pop method from LinkedList class."""
         try:
-            self.list.pop()
+            return self.list.pop()
         except IndexError:
             raise IndexError('Stack is empty.')
 
