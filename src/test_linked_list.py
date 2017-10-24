@@ -1,4 +1,4 @@
-"""Tests for Fibonacci, Lucas and sum_series functions."""
+"""Tests for LinkedList functions."""
 import pytest
 
 

@@ -12,6 +12,8 @@ class Stack(object):
         if isinstance(iterable, (str, list, tuple)):
             for item in iterable:
                 self.push(item)
+        else:
+            raise ValueError('Stack argument must be an iterable.')
 
     def push(self, val):
         """Utilize push method from LinkedList class."""
