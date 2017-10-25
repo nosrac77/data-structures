@@ -20,25 +20,55 @@ def test_init_iterable():
 def test_init_non_iterable():
     """Test if stack imports with non-iterable input."""
     from stack import Stack
-    assert Stack({'hello': 'world'}) == ValueError
+    with pytest.raises(ValueError):
+        Stack({'hello': 'world'})
 
 
-# def test_push_method():
-#     """Test if push method adds new item to linked list."""
-#     from linked_list import LinkedList
-#     test_list = LinkedList()
-#     test_list.push(1)
-#     assert test_list.head.data == 1
+def test_stack_push_method():
+    """Test if push method adds new item to stack."""
+    from stack import Stack
+    s = Stack()
+    s.push(4)
+    assert s.list.head.data == 4
 
 
-# def test_push_method_two():
-#     """Test if push method adds new item head, retains last head."""
-#     from linked_list import LinkedList
-#     test_list = LinkedList()
-#     test_list.push(1)
-#     test_list.push(2)
-#     assert test_list.head.next.data == 1
+def test_stack_push_and_pop():
+    """Test if push and pop methods work together."""
+    from stack import Stack
+    s = Stack()
+    s.push(4)
+    assert s.pop() == 4
+    assert s.list.head.data is None
 
+
+def test_stack_pop_extreme():
+    """Test if pop methods work with lots of vals."""
+    from stack import Stack
+    s = Stack([1, 2, 3])
+    s.pop()
+    assert s.pop() == 2
+
+
+def test_stack_pop_from_empty():
+    """Test Error handle when popping from empty Stack."""
+    from stack import Stack
+    with pytest.raises(IndexError):
+        s = Stack()
+        s.pop()
+
+
+def test_stack_len():
+    """Test __len__ method of stack."""
+    from stack import Stack
+    s = Stack([1, 2, 3])
+    assert len(s) == 3
+
+
+def test_stack_len_zero():
+    """Test __len__ method of stack when len is zero."""
+    from stack import Stack
+    s = Stack()
+    assert len(s) == 1
 
 # def test_pop_method_removes_head_value():
 #     """Tests if pop method returns the value contained in
