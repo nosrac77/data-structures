@@ -4,7 +4,7 @@
 class LinkedList(object):
 
     def __init__(self, iterable=()):
-        """Initializing LinkedList class."""
+        """Initialize LinkedList class."""
         self.head = None
         self._counter = 0
         if isinstance(iterable, (str, list, tuple)):
@@ -17,7 +17,7 @@ class LinkedList(object):
         self._counter += 1
 
     def pop(self):
-        """Removes and returns value of head node."""
+        """Remove and returns value of head node."""
         if self.head is None:
             raise IndexError('List is empty.')
         output = self.head.data
@@ -26,17 +26,23 @@ class LinkedList(object):
         return output
 
     def size(self):
+        """Return length of linked list."""
         return self._counter
 
     def __len__(self):
+        """Return length of linked list."""
         return self._counter
 
     def search(self, val):
+        """Return node containing given value."""
         current_node = self.head
         while current_node:
             if current_node.data == val:
                 return current_node
             current_node = current_node.next
+
+    def remove(self, val):
+        """Remove given node from linked list."""
 
 
 class Node(object):
