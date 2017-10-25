@@ -32,11 +32,11 @@ class DoublyLinked(LinkedList):
     def shift(self):
         """Shift method to take last val from list and return it."""
         for rep in range(len(self.list)):
-            if self.list.next is None:
+            if self.list.head.next is None:
                 temp = self.list.head.data
-                self.list.head.remove()
+                self.list.remove(temp)
                 return temp
-            self.list.head = self.list.next
+            self.list.head = self.list.head.next
 
 if __name__ == '__main__':
     dl = DoublyLinked()
