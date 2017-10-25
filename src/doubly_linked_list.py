@@ -9,10 +9,13 @@ class DoublyLinked(LinkedList):
         """Initialize DoublyLinked instance."""
         self.list = LinkedList()
         self.list._counter = 0
+        self.previous = None
+        self.tail = None
 
     def push(self, val):
         """Emulate LinkedList push method."""
-        super(DoublyLinked, self).push(val)
+        self.previous = self.list.head
+        self.list.push(val)
 
     def pop(self):
         """Emulate LinkedList pop method."""
@@ -26,6 +29,14 @@ class DoublyLinked(LinkedList):
         """Emulate LinkedList's len method."""
         super(DoublyLinked, self).__len__()
 
+    def shift(self):
+        """Shift method to take last val from list and return it."""
+        for rep in range(len(self.list)):
+            if self.list.next is None:
+                temp = self.list.head.data
+                self.list.head.remove()
+                return temp
+            self.list.head = self.list.next
 
 if __name__ == '__main__':
     dl = DoublyLinked()
