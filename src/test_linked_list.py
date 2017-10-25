@@ -1,4 +1,4 @@
-"""Tests for Fibonacci, Lucas and sum_series functions."""
+"""Tests for LinkedList functions."""
 import pytest
 
 
@@ -112,33 +112,3 @@ def test_iterable_upon_initialization():
     l = LinkedList(a_list)
     for item in a_list:
         assert l.search(item).data == item
-
-
-# def test_push():
-#     """Testing push method of LinkedList class."""
-#     from linked_list import LinkedList
-#     from linked_list import Node
-#     test_list = LinkedList()
-#     test_list.push(5)
-#     assert test_list.head == Node(5, test_list.head)
-#     assert test_list.head is not None
-
-# @pytest.mark.parametrize('n, result', FIB_NUMBERS)
-# def test_fibonacci(n, result):
-#     """Test for fibonacci sequence."""
-#     from series import fibonacci
-#     assert fibonacci(n) == result
-
-
-# @pytest.mark.parametrize('n, result', LUCAS_NUMBERS)
-# def test_lucas(n, result):
-#     """Test for lucas sequence."""
-#     from series import lucas
-#     assert lucas(n) == result
-
-
-# @pytest.mark.parametrize('n, op1, op2, result', SUM_NUMBERS)
-# def test_sum_series(n, op1, op2, result):
-#     """Test the sum function."""
-#     from series import sum_series
-#     assert sum_series(n, op1, op2) == result

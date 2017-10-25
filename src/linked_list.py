@@ -2,6 +2,7 @@
 
 
 class LinkedList(object):
+    """Creating LinkedList class."""
 
     def __init__(self, iterable=()):
         """Initialize LinkedList class."""
@@ -43,6 +44,10 @@ class LinkedList(object):
 
     def remove(self, val):
         """Remove given node from linked list."""
+        current_node = self.head
+        while current_node is not val:
+            current_node = current_node.next
+        current_node.next = current_node.next.next
 
 
 class Node(object):

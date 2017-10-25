@@ -1,26 +1,33 @@
 """Stack class function."""
 from linked_list import LinkedList
-from linked_list import Node
 
 
 class Stack(object):
-    """Creating Stack class."""
-    def __init__(self, node=Node()):
+    """Create Stack class."""
+
+    def __init__(self, iterable=None):
+        """Initialize Stack."""
         self.list = LinkedList()
         self.list._counter = 0
-        if node.data is not None:
-            for item in node:
+        if isinstance(iterable, (str, list, tuple)):
+            for item in iterable:
                 self.push(item)
+        elif iterable is None:
+            self.push(None)
+        else:
+            raise ValueError('Stack argument must be an iterable.')
 
     def push(self, val):
-        """Utilizes push method from LinkedList class."""
+        """Utilize push method from LinkedList class."""
         self.list.push(val)
 
     def pop(self):
-        """Utilizes pop method from LinkedList class."""
-        self.list.pop()
-        return self.list.output
+        """Utilize pop method from LinkedList class."""
+        if len(self) == 1:
+            raise IndexError('Stack is empty.')
+        else:
+            return self.list.pop()
 
     def __len__(self):
-        """Returns list length."""
+        """Return list length."""
         return self.list._counter
