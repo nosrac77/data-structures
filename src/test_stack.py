@@ -69,32 +69,3 @@ def test_stack_len_zero():
     from stack import Stack
     s = Stack()
     assert len(s) == 1
-
-# def test_pop_method_removes_head_value():
-#     """Tests if pop method returns the value contained in
-#     the head of the list."""
-#     from linked_list import LinkedList
-#     l = LinkedList()
-#     l.push(1)
-#     l.pop()
-#     assert l.head is None
-
-
-# def test_pop_method_returns_head_value():
-#     """Tests if pop method returns the value contained in
-#     the head of the list."""
-#     from linked_list import LinkedList
-#     l = LinkedList()
-#     l.push(1)
-#     assert l.pop() == 1
-
-
-# def test_pop_method_shifts_values_properly():
-#     """Tests if pop method returns the value contained in
-#     the head of the list."""
-#     from linked_list import LinkedList
-#     l = LinkedList()
-#     l.push(1)
-#     l.push(2)
-#     assert l.pop() == 2
-#     assert l.head.data == 1
