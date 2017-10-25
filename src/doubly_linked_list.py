@@ -1,6 +1,5 @@
 """Class of doubly linked list."""
 from linked_list import LinkedList
-from linked_list import Node
 
 
 class DoublyLinked(LinkedList):
@@ -22,6 +21,10 @@ class DoublyLinked(LinkedList):
     def remove(self, val):
         """Emulate LinkedList remove method."""
         super(DoublyLinked, self).remove(val)
+
+    def __len__(self):
+        """Emulate LinkedList's len method."""
+        super(DoublyLinked, self).__len__()
 
 
 if __name__ == '__main__':
