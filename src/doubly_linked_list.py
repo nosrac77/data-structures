@@ -38,5 +38,6 @@ class DoublyLinked(LinkedList):
                 return temp
             self.list.head = self.list.head.next
 
+
 if __name__ == '__main__':
     dl = DoublyLinked()
