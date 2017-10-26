@@ -43,7 +43,7 @@ class DoublyLinked(object):
         while current_node is not None:
             if current_node.data == val:
                 self._counter -= 1
-                return current_node.pop()
+            return self.pop()
             if current_node.next_node is None:
                 raise IndexError('Input value not in DoublyLinkedList.')
         current_node = current_node.next_node
@@ -71,6 +71,7 @@ class DoublyLinked(object):
 class Node(object):
     """Double List Node class."""
     def __init__(self, val, next_node=None, prev_node=None):
+        self.data = val
         self.next_node = next_node
         self.prev_node = prev_node
 
