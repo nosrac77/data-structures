@@ -57,7 +57,7 @@ class DoublyLinked(object):
         return self.remove(self.tail)
 
     def append(self, val):
-        """Appends to end of list."""
+        """Append to end of list."""
         val = Node(val)
         self._counter += 1
         if self.head is None:
@@ -70,7 +70,9 @@ class DoublyLinked(object):
 
 class Node(object):
     """Double List Node class."""
+
     def __init__(self, val, next_node=None, prev_node=None):
+        """Initialize Node class instance."""
         self.data = val
         self.next_node = next_node
         self.prev_node = prev_node
