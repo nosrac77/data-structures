@@ -39,13 +39,14 @@ class DoublyLinked(object):
     def remove(self, val):
         """Remove given node from linked list."""
         current_node = self.head
-        while current_node is not None:
+        while current_node.next_node is not None:
             if current_node.data == val:
+                output = current_node.data
+                self.head = self.head.next_node
+                self.head.prev_node = None
                 self._counter -= 1
-            return self.pop()
-            if current_node.next_node is None:
-                raise IndexError('Input value not in DoublyLinkedList.')
-        current_node = current_node.next_node
+                return output
+            current_node = current_node.next_node
 
     def __len__(self):
         """Emulate LinkedList's len method."""
@@ -53,7 +54,7 @@ class DoublyLinked(object):
 
     def shift(self):
         """Shift method to take last val from list and return it."""
-        return self.remove(self.tail)
+        return self.remove(self.tail.data)
 
     def append(self, val):
         """Appends to end of list."""

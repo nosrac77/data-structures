@@ -1,6 +1,5 @@
 """Functions that test DoublyLinked class methods."""
 import pytest
-from doubly_linked_list import Node
 from doubly_linked_list import DoublyLinked
 
 
@@ -82,13 +81,30 @@ def test_pop_method_returns_error_when_list_empty():
         pass
 
 
-# def test_remove_method():
-#     """Test that remove removes node."""
-#     l = DoublyLinked()
-#     l.push(1)
-#     l.push(3)
-#     l.push(900)
-#     l.remove(3)
-#     assert len(l) == 2
-#     assert l.head.data == 900
-#     assert l.head.next_node.data == 1
+def test_append():
+    """Test that append function works."""
+    dl = DoublyLinked()
+    dl.append(1)
+    assert dl.head.data == 1
+    assert len(dl) == 1
+    dl.append(2)
+    assert dl.head.data == 1
+    dl.append(3)
+    assert len(dl) == 3
+
+
+def test_shift():
+    """Test shift method return and remove value."""
+    dl = DoublyLinked()
+    dl.push(1)
+    dl.push(2)
+    assert dl.shift() == 1
+
+
+def test_shift_raises_exception_if_no_return_value():
+    """Test shift method raises exception if there's no return value."""
+    dl = DoublyLinked()
+    try:
+        assert dl.remove(5)
+    except AttributeError:
+        pass
