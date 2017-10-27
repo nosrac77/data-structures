@@ -69,3 +69,22 @@ def test_len():
     assert len(q) == 3
     q.dequeue()
     assert len(q) == 2
+
+
+def test_size_size_growing():
+    """Test size function."""
+    q = Q()
+    assert q.size() == 0
+    q.enqueue(10)
+    assert q.size() == 1
+
+
+def test_size_size_decreasing():
+    """Test size function when size is decreasing."""
+    q = Q()
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    assert q.size() == 3
+    q.dequeue()
+    assert q.size() == 2
