@@ -3,11 +3,10 @@
 import pytest
 from que_ import Q
 
-q = Q()
-
 
 def test_enqueue():
     """Test that enqueue function works."""
+    q = Q()
     q.enqueue(1)
     assert q.queue.head.data == 1
     assert len(q) == 1
@@ -19,6 +18,7 @@ def test_enqueue():
 
 def test_dequeue():
     """Test that dequeue works."""
+    q = Q()
     q.enqueue(1)
     q.enqueue(2)
     q.enqueue(3)
@@ -30,12 +30,14 @@ def test_dequeue():
 
 def test_dequeue_from_empty():
     """Test dequeue from empty queue."""
+    q = Q()
     with pytest.raises(IndexError):
         q.dequeue()
 
 
 def test_peek():
     """Test that peek works."""
+    q = Q()
     q.enqueue(1)
     assert q.peek() == 1
     q.enqueue(2)
@@ -46,16 +48,19 @@ def test_peek():
 
 def test_peek_on_empty_queue():
     """Test edge case, calling peak on empty queue."""
+    q = Q()
     assert q.peek() is None
 
 
 def test_len_empty_queue():
     """Test that an empty queue has no len."""
+    q = Q()
     assert len(q) == 0
 
 
 def test_len():
     """Test that len function works."""
+    q = Q()
     q.enqueue(500)
     assert len(q) == 1
     q.enqueue(1000)
