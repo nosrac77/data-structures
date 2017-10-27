@@ -54,18 +54,31 @@ class DoublyLinked(object):
 
     def shift(self):
         """Shift method to take last val from list and return it."""
-        return self.remove(self.tail)
+        return self.remove(self.tail.data)
 
     def append(self, val):
         """Append to end of list."""
-        val = Node(val)
-        self._counter += 1
         if self.head is None:
             self.push(val)
-        else:
-            self.tail.next_node = None
-            val.prev_node = self.tail
-            self.tail = val
+            return
+        curr = Node(val, prev_node=self.tail)
+        self.tail.next_node = curr
+        self.tail = curr
+        self._counter += 1
+
+    def display(self):
+        """Print properly formatted doubly linked list."""
+        start_paren = "("
+        if self.head is None:
+            return "()"
+        current_node = self.head
+        while current_node:
+            if current_node.next_node is None:
+                start_paren += str(current_node.data) + ")"
+                return start_paren
+            else:
+                start_paren += str(current_node.data) + ", "
+                current_node = current_node.next_node
 
 
 class Node(object):

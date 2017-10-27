@@ -108,3 +108,17 @@ def test_shift_raises_exception_if_no_return_value():
         assert dl.remove(5)
     except AttributeError:
         pass
+
+
+def test_display_empty_node():
+    """Test for display method on empty node."""
+    dl = DoublyLinked()
+    assert dl.display() == "()"
+
+
+def test_display_filled_node():
+    """Test display for DLL with contents."""
+    dl = DoublyLinked()
+    dl.push(1)
+    dl.push(2)
+    assert dl.display() == "(2, 1)"
