@@ -26,13 +26,12 @@ class DoublyLinked(object):
         """Emulate LinkedList pop method."""
         if self.head is None:
             raise IndexError('List is empty.')
+        output = self.head.data
         if self.head.next_node is None:
             self.tail = None
-        if self.head.next_node.next_node is None:
-            self.tail = self.head
-        output = self.head.data
-        self.head = self.head.next_node
-        if self.head:
+            self.head = None
+        else:
+            self.head = self.head.next_node
             self.head.prev_node = None
         self._counter -= 1
         return output
@@ -58,14 +57,13 @@ class DoublyLinked(object):
 
     def append(self, val):
         """Appends to end of list."""
-        val = Node(val)
-        self._counter += 1
         if self.head is None:
             self.push(val)
-        else:
-            self.tail.next_node = None
-            val.prev_node = self.tail
-            self.tail = val
+            return
+        curr = Node(val, prev_node=self.tail)
+        self.tail.next_node = curr
+        self.tail = curr
+        self._counter += 1
 
 
 class Node(object):
