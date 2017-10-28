@@ -2,6 +2,7 @@
 
 **Authors**: Chelsea Dole and Carson Newton
 
+
 **Resources**: Pytest
 
 ## Data Structures:
@@ -15,6 +16,7 @@
 * **Queue** - a list/"queue" of nodes. All nodes enter from one side, and exit from the other. Nodes point in only one direction. 
 
 ## Time Complexities:
+
 
 * .push() *The time complexity for this method is O(1), because because push always pushes in from the front, and therefore will always take the same amount of time to complete.*
 
@@ -35,3 +37,4 @@
 * .dequeue() *The time complexity for dequeue is O(1), because it always removes one value off the front of the queue, and nowhere else. Therefore, no matter the queue size, it will take a static amount of time. (Essentially the same as .pop.)*
 
 * .peek() *The time complexity for peek is O(1) because it always prints only the value of the first item in the queue. No matter how large the queue, it will always print only that. Due to this, it takes a static amount of time and is O(1).*
+
