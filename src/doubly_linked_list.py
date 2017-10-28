@@ -41,12 +41,18 @@ class DoublyLinked(object):
         """Remove given node from linked list."""
         current_node = self.head
         while current_node is not None:
+            if current_node is self.tail:
+                self.tail = self.tail.prev_node
+                current_node.prev_node.next_node = None
+                return val
             if current_node.data == val:
+                current_node.prev_node.next_node = current_node.next_node
+                current_node.next_node.prev_node = current_node.prev_node
                 self._counter -= 1
-            return self.pop()
+                return val
             if current_node.next_node is None:
                 raise IndexError('Input value not in DoublyLinkedList.')
-        current_node = current_node.next_node
+            current_node = current_node.next_node
 
     def __len__(self):
         """Emulate LinkedList's len method."""
