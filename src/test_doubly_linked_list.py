@@ -76,7 +76,7 @@ def test_pop_method_returns_error_when_list_empty():
     """Test that pushing multiple values changes inner node connections."""
     l = DoublyLinked()
     try:
-        assert l.pop() == IndexError
+        assert l.pop()
     except IndexError:
         pass
 
@@ -106,5 +106,5 @@ def test_shift_raises_exception_if_no_return_value():
     dl = DoublyLinked()
     try:
         assert dl.remove(5)
-    except AttributeError:
+    except IndexError:
         pass

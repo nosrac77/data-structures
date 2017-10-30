@@ -26,11 +26,13 @@ class DoublyLinked(object):
         """Emulate LinkedList pop method."""
         if self.head is None:
             raise IndexError('List is empty.')
+        output = self.head.data
         if self.head.next_node is None:
             self.tail = None
-        if self.head.next_node.next_node is None:
+            self.head = None
+            return output
+        elif self.head.next_node.next_node is None:
             self.tail = self.head
-        output = self.head.data
         self.head = self.head.next_node
         if self.head:
             self.head.prev_node = None
@@ -39,11 +41,18 @@ class DoublyLinked(object):
 
     def remove(self, val):
         """Remove given node from linked list."""
+        if self.head is None:
+            raise IndexError('Input value not in Data Structure.')
         current_node = self.head
         while current_node is not None:
+            if len(self) == 1 and self.head.data == val:
+                current_node = None
+                self.tail = None
+                break
             if current_node is self.tail:
                 self.tail = self.tail.prev_node
                 current_node.prev_node.next_node = None
+                self._counter -= 1
                 return val
             if current_node.data == val:
                 current_node.prev_node.next_node = current_node.next_node
@@ -60,6 +69,8 @@ class DoublyLinked(object):
 
     def shift(self):
         """Shift method to take last val from list and return it."""
+        if len(self) == 0:
+            raise IndexError('List is empty.')
         return self.remove(self.tail.data)
 
     def append(self, val):

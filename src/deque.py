@@ -1,10 +1,9 @@
 """Deque data structure."""
 from doubly_linked_list import DoublyLinked
-from que_ import Q
 
 
-class Deque(Q):
-    """Create eque data structure."""
+class Deque(object):
+    """Create Deque data structure."""
 
     def __init__(self):
         """Create instance of Deque class."""
@@ -28,11 +27,13 @@ class Deque(Q):
 
     def peek_left(self):
         """Return next value in deque."""
-        return super(Q, self).peek()
+        if len(self.deque) > 0:
+            return self.deque.head.data
+        return None
 
     def peek(self):
         """Return tail value in deque."""
-        if len(self.queue) > 0:
+        if len(self.deque) > 0:
             return self.deque.tail.data
         return None
 

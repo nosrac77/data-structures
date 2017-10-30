@@ -6,8 +6,8 @@ from deque import Deque
 def test_empty_deque():
     """Test that an empty deque has head and tail."""
     d = Deque()
-    assert d.head is None
-    assert d.tail is None
+    assert d.deque.head is None
+    assert d.deque.tail is None
     assert d.size() == 0
 
 
@@ -70,7 +70,7 @@ def test_pop_on_empty_deque():
     d = Deque()
     try:
         assert d.pop()
-    except AttributeError:
+    except IndexError:
         pass
 
 
@@ -89,7 +89,7 @@ def test_pop_left_on_empty_deque():
     d = Deque()
     try:
         assert d.pop_left()
-    except AttributeError:
+    except IndexError:
         pass
 
 
