@@ -93,41 +93,46 @@ def test_pop_left_on_empty_deque():
         pass
 
 
-
-def test_push_two_values_into_doubly_linked_list():
-    """Test that pushing two values adds to front of DLL."""
-    l = DoublyLinked()
-    l.push(0)
-    l.push(1)
-    assert l.head.data == 1
-    assert l.tail.data == 0
-    assert l.head.next_node.data == 0
-    assert l.head.prev_node is None
-    assert l.tail.next_node is None
-    assert l.tail.prev_node.data == 1
-    assert len(l) == 2
+def test_pop_left_on_filled_deque():
+    """Test pop_left on a deque with contents in it."""
+    d = Deque()
+    d.append(1)
+    d.append(2)
+    d.append(3)
+    assert d.pop_left() == 1
+    assert d.pop_left() == 2
 
 
-def test_push_multiple_values_into_doubly_linked_list_change_head():
-    """Test that pushing multiple values adds to front of DLL."""
-    l = DoublyLinked()
-    l.push(0)
-    l.push(1)
-    l.push(3)
-    l.push(4)
-    assert l.head.data == 4
-    assert l.tail.data == 0
-    assert l.head.next_node.data == 3
-    assert l.head.prev_node is None
-    assert l.tail.next_node is None
-    assert l.tail.prev_node.data == 1
-    assert len(l) == 4
+def test_peek_on_empty_deque():
+    """Test peek on empty deque."""
+    d = Deque()
+    assert d.peek() is None
 
 
-def test_pop_method():
-    """Test that pushing multiple values changes inner node connections."""
-    l = DoublyLinked()
-    l.push(0)
-    l.push(1)
-    assert l.pop() == 1
-    assert len(l) == 1
+def test_peek_on_deque_with_head():
+    """Test peek on a deque with a head, aka with contents."""
+    d = Deque()
+    d.append(1)
+    d.append(2)
+    assert d.peek() == 2
+
+
+def test_peek_left_on_empty_deque():
+    """Test peek on empty deque."""
+    d = Deque()
+    assert d.peek_left() is None
+
+
+def test_peek_left_on_deque_with_head():
+    """Test peek on a deque with a head, aka with contents."""
+    d = Deque()
+    d.append(1)
+    d.append(2)
+    assert d.peek_left() == 1
+
+
+def test_peek_and_peek_left_on_deque_with_one_node():
+    """Test peek and peek_left on a one-node deque."""
+    d = Deque()
+    d.append(1)
+    assert d.peek() == 1 and d.peek_left() == 1
