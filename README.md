@@ -7,13 +7,15 @@
 
 ## Data Structures:
 
-* **Singly Linked List** — a data structure comprised of nodes with pointers. The pointer of each node directs towards the next node down the list. Each node has only a single link to another node. 
+* **Singly Linked List** — a data structure comprised of nodes with pointers. The pointer of each node directs towards the next node down the list. Each node has only a single link to another node.
 
-* **Doubly Linked List** - a data structure, like a Singly Linked List, comprised of nodes with pointers. Like the SLL, each node has pointers, however they have two pointers: one pointing to the next node (towards the tail) and one pointing towards the previous node (towards the head). Each node has two links to other nodes. 
+* **Doubly Linked List** - a data structure, like a Singly Linked List, comprised of nodes with pointers. Like the SLL, each node has pointers, however they have two pointers: one pointing to the next node (towards the tail) and one pointing towards the previous node (towards the head). Each node has two links to other nodes.
 
-* **Stack** - a "stacked" data structure which uses the "last in, first out" method to store nodes. It inherits from the Singly Linked List. 
+* **Stack** - a "stacked" data structure which uses the "last in, first out" method to store nodes. It inherits from the Singly Linked List.
 
-* **Queue** - a list/"queue" of nodes. All nodes enter from one side, and exit from the other. Nodes point in only one direction. 
+* **Queue** - a list/"queue" of nodes. All nodes enter from one side, and exit from the other. Nodes point in only one direction.
+
+* **Deque** - a list/"queue" of nodes. Similar to a queue, except not all nodes enter from one side and exit from the other. Nodes can be entered and/or removed from either side of the deque.
 
 ## Time Complexities:
 
@@ -38,3 +40,8 @@
 
 * .peek() *The time complexity for peek is O(1) because it always prints only the value of the first item in the queue. No matter how large the queue, it will always print only that. Due to this, it takes a static amount of time and is O(1).*
 
+* .append_left() *The time complexity for append_left() is O(1) because you're always adding to the front of the data structure, so the time of operation will not change regardless of data structure size.*
+
+* .peek_left() *The time complexity for peek_left is O(1) because it always prints only the value of the first item in the deque. No matter how large the deque, it will always print only that. Due to this, it takes a static amount of time and is O(1).*
+
+* .append_left() *The time complexity for this method is O(1), because you're always adding to the front of the data structure, so the time of operation will not change regardless of data structure size.*
