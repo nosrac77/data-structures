@@ -17,6 +17,8 @@
 
 * **Deque** - a list/"queue" of nodes. Similar to a queue, except not all nodes enter from one side and exit from the other. Nodes can be entered and/or removed from either side of the deque.
 
+* **Graph** - an unordered graph of nodes, connected to each other with pointers (or "edges") that aim in one direction. Non-traversible. 
+
 ## Time Complexities:
 
 
