@@ -24,21 +24,29 @@ def test_push_to_heap():
     m.push(3)
     m.push(4)
     m.push(30)
-    assert m.heap == 
+    assert m.heap == [30, 4, 2, 1, 3]
 
 
-def test_size_of_zero():
-    """Test size of deque when empty."""
-    d = Deque()
-    assert d.size() == 0
+def test_pop_from_populated_heap():
+    """Test pop from populated heap."""
+    m = MaxHeap()
+    m.push(7)
+    m.push(30)
+    m.push(10)
+    m.push(20)
+    assert m.pop() == 30
 
 
-def test_append_left():
-    """Test append left function, test head and tail."""
-    d = Deque()
-    d.append_left(500)
-    assert d.deque.head.data == 500
-    assert d.deque.tail.data == 500
+def test_pop_multiple_times():
+    """Test pop method multiple times in a row."""
+    m = MaxHeap()
+    m.push(7)
+    m.push(30)
+    m.push(10)
+    m.push(20)
+    m.pop()
+    m.pop()
+    assert m.pop()
 
 
 def test_append_left_multiple_items():
