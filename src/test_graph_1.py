@@ -149,10 +149,10 @@ def test_neighbors_false(init_g):
         init_g.neighbors(1)
 
 
-def test_adjacent_true(init_g):
-    """Test that adjacent returns true when nodes connected."""
-    init_g.add_edge(1, 2)
-    assert init_g.adjacent(1, 2) is True
+# def test_adjacent_true(init_g):
+#     """Test that adjacent returns true when nodes connected."""
+#     init_g.add_edge(1, 2)
+#     assert init_g.adjacent(1, 2) is True
 
 
 def test_adjacent_false(init_g):
