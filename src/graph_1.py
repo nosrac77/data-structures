@@ -11,7 +11,10 @@ class G(object):
 
     def nodes(self):
         """Return a list of all nodes."""
-        return self.all_nodes
+        node_vals = []
+        for node in self.all_nodes:
+            node_vals.append(node.data)
+        return node_vals
 
     def edges(self):
         """Return a list of all edges."""

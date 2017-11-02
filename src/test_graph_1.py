@@ -37,7 +37,17 @@ def test_add_nodes_to_empty_graph(init_g):
     """Test that the add_node fn works on an empty graph."""
     init_g.add_node(500)
     assert len(init_g.all_nodes) == 1
-    assert init_g.nodes()[0].data == 500
+    assert init_g.nodes() == [500]
+
+
+def test_add_multiple_nodes_to_graph(init_g):
+    """Test adding multiple nodes to a graph."""
+    init_g.add_node(5)
+    init_g.add_node(15)
+    init_g.add_node(115)
+    init_g.add_node(1115)
+    assert len(init_g.all_nodes) == 4
+    assert init_g.nodes() == [5, 15, 115, 1115]
 
 
 # def test_size_of_deque(init_g):
