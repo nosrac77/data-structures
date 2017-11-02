@@ -59,7 +59,13 @@ class G(object):
 
     def neighbors(self, val):
         """Return list of all nodes connection to val by edges."""
-        pass
+        nodeborhood = []
+        if Node(val) not in self.all_nodes:
+            raise IndexError('Node not in the graph.')
+        for edge in self.all_edges:
+            if edge[0] == val:
+                nodeborhood.push(edge)
+        return nodeborhood
 
     def adjacent(self, val1, val2):
         """Return whether val1 and val2 have a connecting edge."""
