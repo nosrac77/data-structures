@@ -11,5 +11,5 @@ setup(
     py_modules=[],
     install_requires=[],
     extras_require={
-        'testing': ['pytest', 'pytest-cov']}
+        'testing': ['pytest', 'pytest-cov','tox']}
 )
