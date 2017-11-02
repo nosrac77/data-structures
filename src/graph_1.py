@@ -26,18 +26,24 @@ class G(object):
 
     def add_edge(self, val1, val2):
         """Add new node to graph."""
-        if val1 not in self.all_nodes:
-            self.all_nodes.add_node(val1)
-        if val2 not in self.all_nodes:
-            self.all_nodes.add_node(val2)
-        for edge in range(len(self.all_edges) - 1):
-            if self.all_edges[edge] == (val1, val2):
-                self.all_edges[edge] = (val1, val2)
+        if Node(val1) not in self.all_nodes:
+            self.add_node(val1)
+        if Node(val2) not in self.all_nodes:
+            self.add_node(val2)
+        for edge in self.all_edges:
+            if edge == (val1, val2):
+                edge = (val1, val2)
+        self.all_edges.append((val1, val2))
 
     def del_node(self, val):
         """Remove given node from graph."""
-        if val in self.all_nodes:
-            self.all_nodes.remove(val)
+        for node in self.all_nodes:
+            if node.data == val:
+                self.all_nodes.remove(node)
+                for edge in self.all_edges:
+                    if val in edge:
+                        self.del_edge(edge[0], edge[1])
+                break
         else:
             raise IndexError('This node is not in the graph.')
 
@@ -55,16 +61,16 @@ class G(object):
     def neighbors(self, val):
         """Return list of all nodes connection to val by edges."""
         nodeborhood = []
-        if Node(val) not in self.all_nodes:
+        if val not in self.nodes():
             raise IndexError('Node not in the graph.')
         for edge in self.all_edges:
             if edge[0] == val:
-                nodeborhood.push(edge)
+                nodeborhood.append(edge[1])
         return nodeborhood
 
     def adjacent(self, val1, val2):
         """Return whether val1 and val2 have a connecting edge."""
-        if Node(val1) not in self.all_nodes or Node(val2) not in self.all_nodesgr:
+        if Node(val1) not in self.all_nodes or Node(val2) not in self.all_nodes:
             return False
         for edge in self.all_edges:
             if edge == (val1, val2) or edge == (val2, val1):

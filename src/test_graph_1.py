@@ -50,11 +50,94 @@ def test_add_multiple_nodes_to_graph(init_g):
     assert init_g.nodes() == [5, 15, 115, 1115]
 
 
-# def test_size_of_deque(init_g):
-#     """Test that the size method is functional."""
-#     d = Deque()
-#     d.append(1)
-#     assert d.size() == 1
-#     d.append(2)
-#     d.append(3)
-#     assert d.size() == 3
+def test_add_one_edge(init_g):
+    """Test adding an edge."""
+    init_g.add_node(5)
+    init_g.add_node(10)
+    init_g.add_edge(5, 10)
+    assert (5, 10) in init_g.edges()
+
+
+def test_add_multiple_edges(init_g):
+    """Test adding an edge."""
+    init_g.add_node(5)
+    init_g.add_node(10)
+    init_g.add_node(15)
+    init_g.add_edge(5, 10)
+    init_g.add_edge(15, 10)
+    init_g.add_edge(5, 15)
+    assert (5, 10) in init_g.edges()
+    assert (15, 10) in init_g.edges()
+    assert (5, 15) in init_g.edges()
+
+
+def test_add_edge_when_val_doesnt_exist(init_g):
+    """Test adding an edge."""
+    init_g.add_node(20)
+    init_g.add_edge(20, 400)
+    assert (20, 400) in init_g.edges()
+
+
+def test_add_edge_when_no_vals_exist(init_g):
+    """Test adding an edge."""
+    init_g.add_edge(1, 2)
+    assert (1, 2) in init_g.edges()
+
+
+def test_del_node(init_g):
+    """Test deleting existant node."""
+    init_g.add_node(5)
+    init_g.del_node(5)
+    assert len(init_g.all_nodes) == 0
+
+
+def test_del_node_index_error(init_g):
+    """Test deleting a node that doesnt exist."""
+    init_g.add_node(5)
+    with pytest.raises(IndexError):
+        assert init_g.del_node(25)
+
+
+def test_del_node_and_its_edges(init_g):
+    """Test that del node deletes val edges too."""
+    init_g.add_node(5)
+    init_g.add_node(30)
+    init_g.add_edge(30, 10)
+    init_g.del_node(30)
+    assert len(init_g.all_edges) == 0
+
+
+def test_del_edge(init_g):
+    """Test that del_edge deletes edge."""
+    init_g.add_edge(25, 30)
+    init_g.add_edge(1, 2)
+    init_g.del_edge(1, 2)
+    assert init_g.edges() == [(25, 30)]
+
+
+def test_del_edge_that_doesnt_exist(init_g):
+    """Test that del_edge deletes edge that is nonexistent."""
+    init_g.add_edge(25, 30)
+    init_g.add_edge(1, 2)
+    with pytest.raises(IndexError):
+        assert init_g.del_edge(50, 50)
+
+
+def test_has_node_false(init_g):
+    """Assert has node for False."""
+    assert init_g.has_node(200) is False
+
+
+# def test_has_node_true(init_g):
+#     """Assert has node for False."""
+#     init_g.add_node(75)
+#     print(init_g.nodes())
+#     assert init_g.has_node(75) is True
+
+def test_neighbors_true(init_g):
+    """Test that neighbors returns neighbors when they do exist."""
+    init_g.add_edge(1, 2)
+    init_g.add_edge(1, 4)
+    init_g.add_edge(1, 15)
+    print(init_g.all_nodes)
+    assert init_g.neighbors(1) == [2, 4, 15]
