@@ -73,7 +73,7 @@ class G(object):
         if Node(val1) not in self.all_nodes or Node(val2) not in self.all_nodes:
             return False
         for edge in self.all_edges:
-            if edge == (val1, val2) or edge == (val2, val1):
+            if edge == (val1, val2):
                 return True
         return False
 
