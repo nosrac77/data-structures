@@ -17,6 +17,8 @@
 
 * **Deque** - a list/"queue" of nodes. Similar to a queue, except not all nodes enter from one side and exit from the other. Nodes can be entered and/or removed from either side of the deque.
 
+* **Binary Heap** - a binary tree where values are sorted. How the heap is sorted is dependent upon the type of heap. A max heap sorts values from highest to lowest, and min heap does the opposite. Values are added to the bottom, or next open space, and removed from the top.
+
 ## Time Complexities:
 
 
