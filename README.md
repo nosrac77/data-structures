@@ -49,3 +49,21 @@
 * .peek_left() *The time complexity for peek_left is O(1) because it always prints only the value of the first item in the deque. No matter how large the deque, it will always print only that. Due to this, it takes a static amount of time and is O(1).*
 
 * .append_left() *The time complexity for this method is O(1), because you're always adding to the front of the data structure, so the time of operation will not change regardless of data structure size.*
+
+* .nodes() *The time complexity of this method is O(n), because the runtime will depend on the size of n.*
+
+* .edges() *The time complexity of this method is O(n), because the time that the .edges() method takes up will depend on the size of n.*
+
+* .add_node() *The time complexity of this is O(1), because every time the method is just appending to a list, so it'll take the same amount of time every time.*
+
+* .add_edge() *The time complexity of this is O(n), because the for loop's length will depend on the size of n — so its time scales.*
+
+* .del_node() *The time complexity of this is O(n), because how many nodes you have to serach through depends on the size of n. Though there are nested for loops, you're only running the second loop once, so it's not O(n^2).*
+
+* .del_edge() *The time complexity is O(n), because the 'in' operator iterates through all nodes, so it depends on the size of n.*
+
+* .has_node() *The time complexity is O(n), because the function runs through and compares every node in self.all_nodes to val — so runtime depends on the size of n.*
+
+* .neighbors() *The time complexity is O(n), because the function iteratrates through all nodes on the graph.*
+
+* .adjacent() *The time complexity is O(n), because the function runs through all edges in self.all_edges, and the number of edges depends on n size.*
