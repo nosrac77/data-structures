@@ -128,11 +128,12 @@ def test_has_node_false(init_g):
     assert init_g.has_node(200) is False
 
 
-# def test_has_node_true(init_g):
-#     """Assert has node for False."""
-#     init_g.add_node(75)
-#     print(init_g.nodes())
-#     assert init_g.has_node(75) is True
+def test_has_node_true(init_g):
+    """Assert has node for False."""
+    init_g.add_node(75)
+    print(init_g.nodes())
+    assert init_g.has_node(75) is True
+
 
 def test_neighbors_true(init_g):
     """Test that neighbors returns neighbors when they do exist."""

@@ -56,7 +56,10 @@ class G(object):
 
     def has_node(self, val):
         """Return Boolean: is "val" node in graph."""
-        return Node(val) in self.all_nodes
+        for node in self.all_nodes:
+            if node.data is val:
+                return True
+        return False
 
     def neighbors(self, val):
         """Return list of all nodes connection to val by edges."""
