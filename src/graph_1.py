@@ -70,8 +70,12 @@ class G(object):
 
     def adjacent(self, val1, val2):
         """Return whether val1 and val2 have a connecting edge."""
-        if Node(val1) not in self.all_nodes or Node(val2) not in self.all_nodes:
-            return False
+        present_nodes = []
+        for node in self.all_nodes:
+            if node.data == val1 or node.data == val2:
+                present_nodes.append(node.data)
+        if len(present_nodes) < 2:
+            raise IndexError('One or more of these nodes is not in the graph.')
         for edge in self.all_edges:
             if edge == (val1, val2):
                 return True

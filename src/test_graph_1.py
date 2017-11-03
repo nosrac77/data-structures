@@ -149,10 +149,12 @@ def test_neighbors_false(init_g):
         init_g.neighbors(1)
 
 
-# def test_adjacent_true(init_g):
-#     """Test that adjacent returns true when nodes connected."""
-#     init_g.add_edge(1, 2)
-#     assert init_g.adjacent(1, 2) is True
+def test_adjacent_true(init_g):
+    """Test that adjacent returns true when nodes connected."""
+    init_g.add_edge(1, 2)
+    print(init_g.nodes())
+    print(init_g.edges())
+    assert init_g.adjacent(1, 2) is True
 
 
 def test_adjacent_false(init_g):
@@ -160,3 +162,10 @@ def test_adjacent_false(init_g):
     init_g.add_node(1)
     init_g.add_node(2)
     assert init_g.adjacent(1, 2) is False
+
+
+def test_adjacent_error_handling(init_g):
+    """Test IndexError for adjacent."""
+    init_g.add_node(13)
+    with pytest.raises(IndexError):
+        init_g.adjacent(13, 35)
