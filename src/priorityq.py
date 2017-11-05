@@ -37,7 +37,6 @@ class Priority(object):
         max_priority = max(self.priorities)
         current_node = self.head
         while current_node is not None:
-            print(current_node.priority)
             if current_node.priority == max_priority:
                 val = current_node.data
                 if current_node is self.head:
