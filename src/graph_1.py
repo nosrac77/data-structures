@@ -39,7 +39,7 @@ class G(object):
                 if data in self.graph[key]:
                     self.graph[key].remove(data)
         else:
-            raise IndexError('Node not in graph.')
+            raise KeyError('Node not in graph.')
 
     def del_edge(self, val1, val2):
         """Delete an edge."""
