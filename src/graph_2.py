@@ -8,6 +8,7 @@ class G(object):
     def __init__(self):
         """Init graph instance."""
         self.graph = {}
+        self.weights = {}
 
     def nodes(self):
         """Return a list of all nodes."""
@@ -15,27 +16,29 @@ class G(object):
 
     def edges(self):
         """Return a list of tuples showing the relations."""
-        edges = []
-        for key, vals in self.graph.items():
-            for val in vals:
-                edges.append((key, val))
-        return edges
+        return list(self.weights.keys())
 
     def add_node(self, *args):
         """Add a new node or nodes."""
         for data in args:
             self.graph.setdefault(data, [])
 
-    def add_edge(self, val1, val2):
+    def add_edge(self, val1, val2, weight):
         """Add a new edge between 2 nodes."""
         self.add_node(val1, val2)
         edge_head = self.graph[val1]
         edge_head.append(val2)
+        self.weights[(val1, val2)] = weight
 
     def del_node(self, data):
         """Delete a node in the graph."""
         if data in self.nodes():
             del self.graph[data]
+            to_delete = []
+            for key in self.weights.keys():
+                if key[0] == data or key[1] == data:
+                    to_delete.append(key)
+            del self.weights[*to_delete]
             for key in self.graph:
                 if data in self.graph[key]:
                     self.graph[key].remove(data)
@@ -46,6 +49,7 @@ class G(object):
         """Delete an edge."""
         for connected_edge in self.graph[val1]:
             if val2 == connected_edge:
+                del self.weight[(val1, val2)]
                 return self.graph[val1].remove(connected_edge)
         raise KeyError('Edge not in graph.')
 
