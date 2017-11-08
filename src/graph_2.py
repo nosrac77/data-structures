@@ -39,7 +39,7 @@ class G(object):
                 if data in self.graph[key]:
                     self.graph[key].remove(data)
         else:
-            raise IndexError('Node not in graph.')
+            raise KeyError('Node not in graph.')
 
     def del_edge(self, val1, val2):
         """Delete an edge."""
@@ -66,7 +66,25 @@ class G(object):
 
     def breadth_first_traversal(self, val):
         """."""
-        if val not in self.graph:
+        if val not in self.graph.keys():
+            raise KeyError
+        if self.graph[val] == []:
             return [val]
-        node_edges = {}
-        node_edges.append(self.graph[val])
+        return_list = [val]
+        for edges in return_list:
+            return_list.extend(self.graph[edges])
+        return return_list
+
+    def depth_first_traversal(self, val):
+        """."""
+        if val not in self.graph.keys():
+            raise KeyError
+        if self.graph[val] == []:
+            return [val]
+        return_list = [val]
+        # while len(self.nodes()) > return_list:
+        for edges in return_list:
+            if self.graph[edges] != []:
+                return_list.append(self.graph[edges])
+        print(return_list)
+        return return_list
