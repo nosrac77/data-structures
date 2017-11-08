@@ -68,7 +68,7 @@ def test_depth_first_traversal_returns_list_with_val_if_val_no_edges(new_graph):
     """."""
     g = new_graph
     g.add_node('A')
-    assert g.depth_first_traversal('A') == ['A']
+    assert g.depth_first_traversal('A', []) == ['A']
 
 
 def test_depth_first_traversal_returns_list_of_all_val_children(new_graph):
@@ -83,4 +83,5 @@ def test_depth_first_traversal_returns_list_of_all_val_children(new_graph):
     g.add_edge('G', 'H')
     print(g.graph)
     print(g.breadth_first_traversal('A'))
-    assert g.depth_first_traversal('A') == ['A', 'B', 'C', 'D', 'F', 'E', 'G', 'H']
+    print(g.neighbors('A')[0])
+    assert g.depth_first_traversal('A', []) == ['A', 'B', 'C', 'D', 'F', 'E', 'G', 'H']

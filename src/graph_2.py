@@ -1,4 +1,5 @@
 """Graph data structure."""
+from stack import Stack
 
 
 class G(object):
@@ -77,14 +78,4 @@ class G(object):
 
     def depth_first_traversal(self, val):
         """."""
-        if val not in self.graph.keys():
-            raise KeyError
-        if self.graph[val] == []:
-            return [val]
-        return_list = [val]
-        # while len(self.nodes()) > return_list:
-        for edges in return_list:
-            if self.graph[edges] != []:
-                return_list.append(self.graph[edges])
-        print(return_list)
-        return return_list
+        self.stack = Stack()
