@@ -76,7 +76,9 @@ class G(object):
             return [val]
         return_list = [val]
         for edges in return_list:
-            return_list.extend(self.graph[edges])
+            for edge in self.graph[edges]:
+                if edge not in return_list:
+                    return_list.append(edge)
         return return_list
 
     def depth_first_traversal(self, val):
