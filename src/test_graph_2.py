@@ -82,3 +82,29 @@ def test_depth_first_traversal_returns_list_of_all_val_children(new_graph):
     g.add_edge('E', 'G', 10)
     g.add_edge('G', 'H', 10)
     assert g.depth_first_traversal('A') == ['A', 'B', 'C', 'D', 'F', 'E', 'G', 'H']
+
+
+def test_depth_first_traversal_does_not_repeat_edges_with_looped_modes(new_graph):
+    """Test that DFT doesnt enter an infinite loop."""
+    g = new_graph
+    g.add_edge(1, 2, 10)
+    g.add_edge(1, 3, 10)
+    g.add_edge(3, 4, 10)
+    g.add_edge(4, 5, 10)
+    g.add_edge(5, 6, 10)
+    g.add_edge(6, 3, 10)
+    g.add_edge(7, 3, 10)
+    assert g.depth_first_traversal(3) == [3, 4, 5, 6]
+
+
+def test_breadth_first_traversal_does_not_repeat_edges_with_looped_modes(new_graph):
+    """Test that BFT doesnt enter an infinite loop."""
+    g = new_graph
+    g.add_edge(1, 2, 10)
+    g.add_edge(1, 3, 10)
+    g.add_edge(3, 4, 10)
+    g.add_edge(4, 5, 10)
+    g.add_edge(5, 6, 10)
+    g.add_edge(6, 3, 10)
+    g.add_edge(7, 3, 10)
+    assert g.breadth_first_traversal(3) == [3, 4, 5, 6]
