@@ -1,5 +1,4 @@
 """Graph data structure."""
-from stack import Stack
 
 
 class G(object):
@@ -38,7 +37,7 @@ class G(object):
             for key in self.weights.keys():
                 if key[0] == data or key[1] == data:
                     to_delete.append(key)
-            del self.weights[*to_delete]
+            del self.weights[to_delete]
             for key in self.graph:
                 if data in self.graph[key]:
                     self.graph[key].remove(data)
@@ -82,4 +81,16 @@ class G(object):
 
     def depth_first_traversal(self, val):
         """."""
-        self.stack = Stack()
+        if self.graph[val] == []:
+            return [val]
+        return_list = []
+        other_list = [val]
+        while other_list:
+            node = other_list[0]
+            if node not in return_list:
+                return_list.append(node)
+                del other_list[0]
+                for edge in reversed(self.graph[node]):
+                    if edge not in return_list and edge not in other_list:
+                        other_list.insert(0, edge)
+        return return_list
