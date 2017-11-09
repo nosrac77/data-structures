@@ -22,6 +22,31 @@ def test_add_edge(new_graph):
     assert g.graph['A'] == ['B']
 
 
+def test_add_node(new_graph):
+    """Function to test that the add_node method is functional."""
+    g = new_graph
+    g.add_node(1)
+    g.add_node(400)
+    assert g.graph == {1: [], 400: []}
+    assert len(g.graph) == 2
+
+
+def test_edges(new_graph):
+    """Test that edges returns a list of all edges."""
+    g = new_graph
+    g.add_edge(1, 3, 1000)
+    g.add_edge('A', 'Flerg', 300)
+    assert g.edges() == [(1, 3), ('A', 'Flerg')]
+
+
+def test_nodes(new_graph):
+    """Test that nodes returns a list of all nodes."""
+    g = new_graph
+    g.add_node(1)
+    g.add_node('A')
+    assert g.nodes() == [1, 'A']
+
+
 def test_breadth_first_traversal_returns_list_of_val_if_val_not_in_graph(new_graph):
     """."""
     g = new_graph
