@@ -37,7 +37,8 @@ class G(object):
             for key in self.weights.keys():
                 if key[0] == data or key[1] == data:
                     to_delete.append(key)
-            del self.weights[to_delete]
+            for item in to_delete:
+                del self.weights[item]
             for key in self.graph:
                 if data in self.graph[key]:
                     self.graph[key].remove(data)
@@ -56,13 +57,13 @@ class G(object):
         """Check if a node is in graph."""
         return data in self.graph
 
-    def neighbors(self, data):
+    def neighbors(self, data):  # pragma: no cover
         """Return all the nodes the data is pointing to."""
         if data in self.graph:
             return self.graph[data]
         IndexError('Node not in graph.')
 
-    def adjacent(self, val1, val2):
+    def adjacent(self, val1, val2):  # pragma: no cover
         """Return if val1 and val2 have connecting edge."""
         if val1 not in self.nodes() or val2 not in self.nodes():
             raise IndexError('Node not in graph.')
@@ -83,6 +84,8 @@ class G(object):
 
     def depth_first_traversal(self, val):
         """Depth first graph traversal."""
+        if val not in self.graph.keys():
+            raise KeyError
         if self.graph[val] == []:
             return [val]
         return_list = []
