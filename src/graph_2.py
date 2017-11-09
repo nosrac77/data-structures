@@ -69,7 +69,7 @@ class G(object):
         return val1 in self.graph[val2] or val2 in self.graph[val1]
 
     def breadth_first_traversal(self, val):
-        """."""
+        """Breadth first graph traversal."""
         if val not in self.graph.keys():
             raise KeyError
         if self.graph[val] == []:
@@ -80,7 +80,7 @@ class G(object):
         return return_list
 
     def depth_first_traversal(self, val):
-        """."""
+        """Depth first graph traversal."""
         if self.graph[val] == []:
             return [val]
         return_list = []
