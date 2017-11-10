@@ -21,6 +21,8 @@
 
 * **Graph** - an unordered graph of nodes, connected to each other with pointers (or "edges") that aim in one direction. Non-traversible. 
 
+* **Weighted Graph** - A graph (as described above) with weighted edges assigned at edge creation. Traversible using depth-first or breadth-first methods. 
+
 ## Time Complexities:
 
 
@@ -67,3 +69,7 @@
 * .neighbors() *The time complexity is O(n), because the function iteratrates through all nodes on the graph.*
 
 * .adjacent() *The time complexity is O(n), because the function runs through all edges in self.all_edges, and the number of edges depends on n size.*
+
+* .breadth_first_traversal() *The time complexity is O(n^2), because is has a nested for loop, so the runtime will grow exponentialy based on the size of n.*
+
+* .depth_first_traversal() *The time complexity is O(n), because the runtime gets longer as n gets bigger. 
