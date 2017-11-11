@@ -4,14 +4,12 @@
 class Priority(object):
     """Class to create priority queue."""
 
-
     def __init__(self):
         """Initialize instance of self."""
         self._counter = 0
         self.priorities = []
         self.head = None
         self.tail = None
-
 
     def insert(self, val, priority=0):
         """Add value to end of queue."""
@@ -28,7 +26,6 @@ class Priority(object):
             self.tail.next_node = curr
             self.tail = curr
             self._counter += 1
-
 
     def pop(self):
         """Remove highest priority value from queue."""
@@ -61,7 +58,6 @@ class Priority(object):
                 return val
             current_node = current_node.next_node
 
-
     def peek(self):
         """Return highest priority node in queue."""
         if self.head is None:
@@ -77,7 +73,6 @@ class Priority(object):
 
 class Node(object):
     """Double List Node class."""
-
 
     def __init__(self, val, priority, next_node=None, prev_node=None):
         """Initialize Node class instance."""
