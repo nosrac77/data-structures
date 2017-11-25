@@ -34,18 +34,18 @@ def test_add_node(g):
     assert len(g.graph) == 2
 
 
-def test_edges(g):
-    """Test that edges returns a list of all edges."""
-    g.add_edge(1, 3, 1000)
-    g.add_edge('A', 'Flerg', 300)
-    assert g.edges() == [(1, 3), ('A', 'Flerg')]
+# def test_edges(g):
+#     """Test that edges returns a list of all edges."""
+#     g.add_edge(1, 3, 1000)
+#     g.add_edge('A', 'Flerg', 300)
+#     assert g.edges() == [(1, 3), ('A', 'Flerg')]
 
 
-def test_nodes(g):
-    """Test that nodes returns a list of all nodes."""
-    g.add_node(1)
-    g.add_node('A')
-    assert g.nodes() == [1, 'A']
+# def test_nodes(g):
+#     """Test that nodes returns a list of all nodes."""
+#     g.add_node(1)
+#     g.add_node('A')
+#     assert g.nodes() == [1, 'A']
 
 
 def test_del_node(g):

@@ -3,7 +3,7 @@
 **Authors**: Chelsea Dole and Carson Newton
 
 
-**Resources**: Pytest
+**Resources**: Pytest, pytest-cov, tox, and timeit were all used to make/test the following data structures.
 
 ## Data Structures:
 
@@ -19,9 +19,11 @@
 
 * **Binary Heap** - a binary tree where values are sorted. How the heap is sorted is dependent upon the type of heap. A max heap sorts values from highest to lowest, and min heap does the opposite. Values are added to the bottom, or next open space, and removed from the top.
 
-* **Graph** - an unordered graph of nodes, connected to each other with pointers (or "edges") that aim in one direction. Non-traversible. 
+* **Graph** - an unordered graph of nodes, connected to each other with pointers (or "edges") that aim in one direction. Non-traversible.
 
-* **Weighted Graph** - A graph (as described above) with weighted edges assigned at edge creation. Traversible using depth-first or breadth-first methods. 
+* **Weighted Graph** - A graph (as described above) with weighted edges assigned at edge creation. Traversible using depth-first or breadth-first methods.
+
+* **Binary Search Tree** - A binary search tree containing nodes. Each node has a value, which is currently set up to hold integers, and also left and right attributes. Nodes are sorted upon insertion. Each node is inserted according to it's value compared to the other nodes in the tree.
 
 ## Time Complexities:
 
@@ -70,6 +72,28 @@
 
 * .adjacent() *The time complexity is O(n), because the function runs through all edges in self.all_edges, and the number of edges depends on n size.*
 
-* .breadth_first_traversal() *The time complexity is O(n^2), because is has a nested for loop, so the runtime will grow exponentialy based on the size of n.*
+* .breadth_first_traversal() *The time complexity is O(n^2), because is has a nested for loop, so the runtime will grow exponentially based on the size of n.*
 
-* .depth_first_traversal() *The time complexity is O(n), because the runtime gets longer as n gets bigger. 
+* .depth_first_traversal() *The time complexity is O(n), because the runtime gets longer as n gets bigger.*
+
+**Binary Search Tree Methods:**
+
+* .insert() *The time complexity of this method is, at it's best, O(log n), and at it's worst, 0(n). These differences depend entirely on the tree structure.*
+
+* .search() *The time complexity of this method is 0(n) because it checks the value given against every node in the tree using a for loop.*
+
+* .size() *The time complexity of this method is 0(1) because it just returns the length of a list.*
+
+* .contains() *The time complexity of this method is 0(k) at best and O(n) at worst because it checks the value given against an entire list of values.*
+
+* .depth() *The time complexity of this method is, at it's worst, 0(n), and at it's best, 0(1), depending on the size of the tree.*
+
+* .balance() *The time complexity of this method is, at it's worst, 0(n), and at it's best, 0(1), depending on the size of the tree.*
+
+* .pre_order() *The time complexity of this method is O(n), because it requires every node in the binary search tree to get recursively called before the generator can yield the correct pre-order values. As a side note, this method calls upon a helper function, _pre_order_traversal, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of both functions.*
+
+* .post_order() *The time complexity of this method is O(n), because it requires every node in the binary search tree to get recursively called before the generator can yield the correct post-order values. As a side note, this method calls upon a helper function, _post_order_traversal, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of both functions.*
+
+* .in_order() *The time complexity of this method is O(n), because it requires every node in the binary search tree to get recursively called before the generator can yield the correct in-order values. As a side note, this method calls upon a helper function, _in_order_traversal, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of both functions.*
+
+* .breadth_first() *The time complexity of this method is O(n^2), because it requires every node in the binary search tree to get iterated over while also iterating over that node's children before the generator can yield the correct breadth-first values. As a side note, this method calls upon two helper functions, _breadth_first_traversal and _get_children, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of all three functions.*
