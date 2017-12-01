@@ -273,3 +273,50 @@ def test_breadth_first_yields_correct_values(filled_bst):
     assert next(filled_bst.breadth_first()) == 7
     assert next(filled_bst.breadth_first()) == 18
     assert filled_bst.traversal_list == []
+
+
+def test_node_insert_creates_parent_relationship(new_bst):
+    """Function that tests multiple inserts create proper child/parent
+    relationship between applicable nodes."""
+    new_bst.insert(10)
+    new_bst.insert(8)
+    new_bst.insert(12)
+    new_bst.insert(15)
+    new_bst.insert(6)
+    new_bst.insert(9)
+    new_bst.insert(11)
+    assert new_bst.bst[0].parent is None
+    assert new_bst.bst[1].parent.value == 10
+    assert new_bst.bst[2].parent.value == 10
+    assert new_bst.bst[3].parent.value == 12
+    assert new_bst.bst[4].parent.value == 8
+    assert new_bst.bst[5].parent.value == 8
+    assert new_bst.bst[6].parent.value == 12
+
+
+def test_delete_method_on_leaf_node(new_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
+    new_bst.insert(10)
+    new_bst.insert(9)
+    new_bst.insert(8)
+    new_bst.insert(7)
+    new_bst.delete(8)
+    assert new_bst.bst[1].left.value == 7
+    assert new_bst.bst[2].parent.value == 9
+    assert new_bst.size() == 3
+    assert len(new_bst.bst) == 3
+
+
+def test_delete_method_on_node_with_two_children(filled_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
+    filled_bst.delete(12)
+    assert filled_bst.bst[0].right.value == 11
+    assert filled_bst.bst[5].parent.value == 10
+    assert filled_bst.bst[5].right.value == 15
+    assert filled_bst.bst[5].left.value is None
+    assert filled_bst.size() == 9
+    assert len(filled_bst.bst) == 9
