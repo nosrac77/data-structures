@@ -97,3 +97,13 @@
 * .in_order() *The time complexity of this method is O(n), because it requires every node in the binary search tree to get recursively called before the generator can yield the correct in-order values. As a side note, this method calls upon a helper function, _in_order_traversal, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of both functions.*
 
 * .breadth_first() *The time complexity of this method is O(n^2), because it requires every node in the binary search tree to get iterated over while also iterating over that node's children before the generator can yield the correct breadth-first values. As a side note, this method calls upon two helper functions, _breadth_first_traversal and _get_children, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of all three functions.*
+
+**Trie Table Methods:**
+
+* .insert() *The time complexity of this method is at it's worst, 0(n). In the case that the same word is being inserted twice in a row, this method will call the contains method, which would at that point iterate over the entire tree before telling the insert method to do an empty return. Also, if the insert is being performed for the first time, it must technically iterate over the entire tree to add all letters of the given word.*
+
+* .contains() *The time complexity of this method is, at it's worst, 0(n). In the case that the tree only has one word, and contains is called using that word, the method must technically iterate over every node in the tree before returning True.*
+
+* .size() *The time complexity of this method is, at it's worst, 0(1). This is because the method only returns the integer contained in the trees _size attribute.*
+
+* .remove() *The time complexity of this method is, at it's worst, 0(n). In the case that the tree only has one word, and the method is called on that word, the method must technically iterate over every node in the tree before accomplishing it's task.*
