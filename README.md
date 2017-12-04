@@ -2,6 +2,7 @@
 
 **Authors**: Chelsea Dole and Carson Newton
 
+[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=bst)](https://travis-ci.org/nosrac77/data-structures)
 
 **Resources**: Pytest, pytest-cov, tox, and timeit were all used to make/test the following data structures.
 
