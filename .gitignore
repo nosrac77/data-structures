@@ -105,3 +105,6 @@ ENV_DATA_STRUCTURES/
 
 # tox
 .tox
+
+# huge txt file full of words (for testing Hash Table)
+lots_of_words.txt

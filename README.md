@@ -97,3 +97,11 @@
 * .in_order() *The time complexity of this method is O(n), because it requires every node in the binary search tree to get recursively called before the generator can yield the correct in-order values. As a side note, this method calls upon a helper function, _in_order_traversal, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of both functions.*
 
 * .breadth_first() *The time complexity of this method is O(n^2), because it requires every node in the binary search tree to get iterated over while also iterating over that node's children before the generator can yield the correct breadth-first values. As a side note, this method calls upon two helper functions, _breadth_first_traversal and _get_children, in order to accomplish it's task. The aforementioned time complexity takes into account the time complexity of all three functions.*
+
+**Hash Table Methods:**
+
+* ._hash() *The time complexity of this method is O(n), because it iterates over the entire length of the given key in order to generate the hashed value of the key.*
+
+* .get() *The answer to this question depends on how we're defining the value returned by the method. This method just returns a list, containing either one value, multiple values (if collisions occurred during hashing), or nothing. So, if we're defining the value being returned as the word associated with the given key (and not the bucket that it sits in), then the time complexity of this method is O(n) at it's worst. This is because you might have to iterate over every value in the bucket in order to find the specific word you're looking for. If we're defining the value as the bucket that houses it, the lookup time for this method will always be a consistent O(1) since it's just returning the bucket in the table at a specific index.*
+
+* .set_key() *The time complexity for this method is a constant O(1), because it will always append to the bucket at the table index provided by the hash.*

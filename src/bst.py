@@ -108,57 +108,57 @@ class Bst(object):
         elif right_levels > left_levels:
             return -1
 
-    def delete(self, val):
-        """Delete node with value from binary search tree, if present."""
-        if val not in self.node_values:
-            return
-        node = self.search(val)
-        if not node.left and not node.right:
-            if node.parent.left.value == val:
-                node.parent.left = None
-                node.parent = None
-                return
-            node.parent.right = None
-            node.parent = None
-            self.bst.remove(node)
-            self.node_values.remove(val)
-            return
-        if len(node._get_children()) == 2:
-            if node.right.left:
-                current_node = node.right.left
-                while current_node.left is not None:
-                    current_node = current_node.left
-                if current_node.right:
-                    current_node.right.parent = current_node.parent
-                    current_node.parent.left = current_node.right
-                    current_node.parent = None
-                    current_node.right = None
-                    node.value = current_node.value
-                    self.bst.remove(current_node)
-                    self.node_values.remove(val)
-                    return
-                current_node.parent.left = None
-                current_node.parent = None
-                node.value = current_node.value
-                self.bst.remove(current_node)
-                self.node_values.remove(val)
-                return
-            node.right.parent = node.parent
-            node.parent.right = node.right
-            node.parent = None
-            node.right = None
-            self.bst.remove(current_node)
-            self.node_values.remove(val)
-            return
-        node._get_children()[0].parent = node.parent
-        if node.parent.value > node.value:
-            node.parent.left = node._get_children()[0]
-        elif node.parent.value < node.value:
-            node.parent.right = node._get_children()[0]
-        node.parent = None
-        self.bst.remove(node)
-        self.node_values.remove(val)
-        return
+    # def delete(self, val):
+    #     """Delete node with value from binary search tree, if present."""
+    #     if val not in self.node_values:
+    #         return
+    #     node = self.search(val)
+    #     if not node.left and not node.right:
+    #         if node.parent.left.value == val:
+    #             node.parent.left = None
+    #             node.parent = None
+    #             return
+    #         node.parent.right = None
+    #         node.parent = None
+    #         self.bst.remove(node)
+    #         self.node_values.remove(val)
+    #         return
+    #     if len(node._get_children()) == 2:
+    #         if node.right.left:
+    #             current_node = node.right.left
+    #             while current_node.left is not None:
+    #                 current_node = current_node.left
+    #             if current_node.right:
+    #                 current_node.right.parent = current_node.parent
+    #                 current_node.parent.left = current_node.right
+    #                 current_node.parent = None
+    #                 current_node.right = None
+    #                 node.value = current_node.value
+    #                 self.bst.remove(current_node)
+    #                 self.node_values.remove(val)
+    #                 return
+    #             current_node.parent.left = None
+    #             current_node.parent = None
+    #             node.value = current_node.value
+    #             self.bst.remove(current_node)
+    #             self.node_values.remove(val)
+    #             return
+    #         node.right.parent = node.parent
+    #         node.parent.right = node.right
+    #         node.parent = None
+    #         node.right = None
+    #         self.bst.remove(current_node)
+    #         self.node_values.remove(val)
+    #         return
+    #     node._get_children()[0].parent = node.parent
+    #     if node.parent.value > node.value:
+    #         node.parent.left = node._get_children()[0]
+    #     elif node.parent.value < node.value:
+    #         node.parent.right = node._get_children()[0]
+    #     node.parent = None
+    #     self.bst.remove(node)
+    #     self.node_values.remove(val)
+    #     return
 
     def _pre_order_traversal(self, node):
         """Helper function for pre_order method."""
