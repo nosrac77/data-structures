@@ -298,25 +298,127 @@ def test_delete_method_on_leaf_node(new_bst):
     """Function that tests delete method on binary search tree removes node and
     reassigns parent node pointer."""
 
+    new_bst.insert(12)
+    new_bst.insert(10)
+    new_bst.insert(11)
+    new_bst.insert(7)
+
+    new_bst.delete(7)
+
+    assert new_bst.bst[1].value == 10
+    assert new_bst.bst[1].parent.value == 12
+    assert new_bst.bst[1].right.value == 11
+    assert new_bst.bst[1].left is None
+    assert new_bst.size() == 3
+    assert len(new_bst.bst) == 3
+
+    new_bst.delete(11)
+
+    assert new_bst.bst[1].value == 10
+    assert new_bst.bst[1].parent.value == 12
+    assert new_bst.bst[1].right is None
+    assert new_bst.bst[1].left is None
+    assert new_bst.size() == 2
+    assert len(new_bst.bst) == 2
+
+
+def test_delete_method_on_node_with_two_children(new_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
+    new_bst.insert(100)
+    new_bst.insert(94)
+    new_bst.insert(50)
+    new_bst.insert(49)
+    new_bst.insert(75)
+    new_bst.insert(74)
+    new_bst.insert(73)
+    new_bst.insert(72)
+    new_bst.insert(71)
+    new_bst.insert(70)
+    new_bst.delete(50)
+
+    assert len(new_bst.bst) == 9
+    assert new_bst.size() == 9
+    assert new_bst.bst[2].value == 70
+    assert new_bst.bst[2].left.value == 49
+    assert new_bst.bst[2].right.value == 75
+    assert new_bst.bst[2].parent.value == 94
+
+
+def test_delete_method_node_has_2_children_replacement_node_has_right(new_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
+    new_bst.insert(100)
+    new_bst.insert(94)
+    new_bst.insert(50)
+    new_bst.insert(49)
+    new_bst.insert(80)
+    new_bst.insert(74)
+    new_bst.insert(73)
+    new_bst.insert(70)
+    new_bst.insert(72)
+    new_bst.insert(71)
+    new_bst.delete(50)
+
+    assert len(new_bst.bst) == 9
+    assert new_bst.size() == 9
+    assert new_bst.bst[2].value == 70
+    assert new_bst.bst[2].left.value == 49
+    assert new_bst.bst[2].right.value == 80
+    assert new_bst.bst[2].parent.value == 94
+    assert new_bst.bst[7].parent.value == 73
+    assert new_bst.bst[7].value == 72
+    assert new_bst.bst[7].left.value == 71
+    assert new_bst.bst[7].right is None
+
+
+def test_delete_method_node_has_2_children_no_right_left_child(new_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
+    new_bst.insert(100)
+    new_bst.insert(94)
+    new_bst.insert(50)
+    new_bst.insert(49)
+    new_bst.insert(80)
+    new_bst.insert(81)
+
+    new_bst.delete(50)
+
+    assert len(new_bst.bst) == 5
+    assert new_bst.size() == 5
+    assert new_bst.bst[3].value == 80
+    assert new_bst.bst[3].left.value == 49
+    assert new_bst.bst[3].right.value == 81
+    assert new_bst.bst[3].parent.value == 94
+
+
+def test_delete_method_on_node_with_one_child(new_bst):
+    """Function that tests delete method on binary search tree removes node and
+    reassigns parent node pointer."""
+
     new_bst.insert(10)
     new_bst.insert(9)
     new_bst.insert(8)
     new_bst.insert(7)
     new_bst.delete(8)
-    assert new_bst.bst[1].left.value == 7
+    assert new_bst.bst[2].value == 7
     assert new_bst.bst[2].parent.value == 9
-    assert new_bst.size() == 3
+    assert new_bst.bst[2].left is None
+    assert new_bst.bst[2].right is None
     assert len(new_bst.bst) == 3
+    assert new_bst.size() == 3
 
-
-def test_delete_method_on_node_with_two_children(filled_bst):
-    """Function that tests delete method on binary search tree removes node and
-    reassigns parent node pointer."""
-
-    filled_bst.delete(12)
-    assert filled_bst.bst[0].right.value == 11
-    assert filled_bst.bst[5].parent.value == 10
-    assert filled_bst.bst[5].right.value == 15
-    assert filled_bst.bst[5].left.value is None
-    assert filled_bst.size() == 9
-    assert len(filled_bst.bst) == 9
+    new_bst.insert(11)
+    new_bst.insert(12)
+    new_bst.insert(13)
+    new_bst.insert(14)
+    new_bst.delete(12)
+    assert new_bst.bst[4].value == 13
+    assert new_bst.bst[4].parent.value == 11
+    assert new_bst.bst[4].left is None
+    assert new_bst.bst[4].right.value == 14
+    assert len(new_bst.bst) == 6
+    assert new_bst.size() == 6
