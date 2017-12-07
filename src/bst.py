@@ -29,8 +29,6 @@ class Bst(object):
         self.node_values = []
         self.bst = []
         self.root = None
-        self.traversal_list = []
-        self._recursion_check = False
 
     def insert(self, val):
         """Add value to bst."""
@@ -170,89 +168,71 @@ class Bst(object):
 
     def _pre_order_traversal(self, node):
         """Helper function for pre_order method."""
-        if self.root.value not in self.traversal_list:
-            self.traversal_list.append(self.root.value)
+        yield node.value
         if node.left:
-            self.traversal_list.append(node.left.value)
-            self._pre_order_traversal(node.left)
+            for val in self._pre_order_traversal(node.left):
+                yield val
         if node.right:
-            self.traversal_list.append(node.right.value)
-            self._pre_order_traversal(node.right)
+            for val in self._pre_order_traversal(node.right):
+                yield val
 
     def pre_order(self):
         """Return generator that returns values of tree using pre_order
         traversal, one at a time."""
-        if self._recursion_check is False:
-            self._recursion_check = True
-            self._pre_order_traversal(self.root)
-        for val in self.traversal_list:
-            num = val
-            self.traversal_list.pop(0)
-            if len(self.traversal_list) == 0:
-                self._recursion_check = False
-            yield num
+        if self.root:
+            return self._pre_order_traversal(self.root)
 
     def _post_order_traversal(self, node):
         """Helper function for post_order method."""
         if node.left:
-            self._post_order_traversal(node.left)
+            for val in self._post_order_traversal(node.left):
+                yield val
         if node.right:
-            self._post_order_traversal(node.right)
-        self.traversal_list.append(node.value)
+            for val in self._post_order_traversal(node.right):
+                yield val
+        yield node.value
 
     def post_order(self):
         """Return generator that returns values of tree using post_order
         traversal, one at a time."""
-        if self._recursion_check is False:
-            self._recursion_check = True
-            self._post_order_traversal(self.root)
-        for val in self.traversal_list:
-            num = val
-            self.traversal_list.pop(0)
-            if len(self.traversal_list) == 0:
-                self._recursion_check = False
-            yield num
+        if self.root:
+            return self._post_order_traversal(self.root)
 
     def _in_order_traversal(self, node):
         """Helper function for in_order method."""
         if node.left:
-            self._in_order_traversal(node.left)
-        self.traversal_list.append(node.value)
+            for val in self._in_order_traversal(node.left):
+                yield val
+        yield node.value
         if node.right:
-            self._in_order_traversal(node.right)
+            for val in self._in_order_traversal(node.right):
+                yield val
 
     def in_order(self):
         """Return generator that returns values of tree using in_order
         traversal, one at a time."""
-        if self._recursion_check is False:
-            self._recursion_check = True
-            self._in_order_traversal(self.root)
-        for val in self.traversal_list:
-            num = val
-            self.traversal_list.pop(0)
-            if len(self.traversal_list) == 0:
-                self._recursion_check = False
-            yield num
+        if self.root:
+            return self._in_order_traversal(self.root)
 
     def _breadth_first_traversal(self):
         """Helper function of breadth_first method."""
-        stack = [self.root]
-        while stack:
-            current_node = stack[0]
-            stack = stack[1:]
-            self.traversal_list.append(current_node.value)
-            for child in current_node._get_children():
-                stack.append(child)
+        if self.root:
+            stack = [self.root]
+            traversal_list = []
+            while stack:
+                current_node = stack[0]
+                stack = stack[1:]
+                traversal_list.append(current_node.value)
+                for child in current_node._get_children():
+                    stack.append(child)
+            return traversal_list
 
     def breadth_first(self):
         """Return generator that returns values of tree using breadth_first
         traversal, one at a time."""
-        if len(self.traversal_list) == 0:
-            self._breadth_first_traversal()
-        for val in self.traversal_list:
-            num = val
-            self.traversal_list.pop(0)
-            yield num
+        if self.root:
+            for val in self._breadth_first_traversal():
+                yield val
 
 
 if __name__ == '__main__':  # pragma no cover

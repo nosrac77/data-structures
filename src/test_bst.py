@@ -211,68 +211,65 @@ def test_pre_order_traversal_yields_correct_values(filled_bst):
     """Function that tests pre_order method of binary search tree yields the
     correct pre order traversal values."""
 
-    assert next(filled_bst.pre_order()) == 10
-    assert next(filled_bst.pre_order()) == 8
-    assert next(filled_bst.pre_order()) == 6
-    assert next(filled_bst.pre_order()) == 5
-    assert next(filled_bst.pre_order()) == 7
-    assert next(filled_bst.pre_order()) == 9
-    assert next(filled_bst.pre_order()) == 12
-    assert next(filled_bst.pre_order()) == 11
-    assert next(filled_bst.pre_order()) == 15
-    assert next(filled_bst.pre_order()) == 18
-    assert filled_bst.traversal_list == []
+    gen = filled_bst.pre_order()
+    assert list(gen) == [10, 8, 6, 5, 7, 9, 12, 11, 15, 18]
+
+
+def test_pre_order_traversal_non_op_if_bst_empty(new_bst):
+    """Function that tests pre_order method of binary search tree non-op if bst
+    is empty."""
+
+    gen = new_bst.pre_order()
+    assert gen is None
+
+
+def test_post_order_traversal_non_op_if_bst_empty(new_bst):
+    """Function that tests post_order method of binary search tree non-op if
+    bst is empty."""
+
+    gen = new_bst.post_order()
+    assert gen is None
+
+
+def test_in_order_traversal_non_op_if_bst_empty(new_bst):
+    """Function that tests in_order method of binary search tree non-op if
+    bst is empty."""
+
+    gen = new_bst.in_order()
+    assert gen is None
+
+
+def test_breadth_first_traversal_non_op_if_bst_empty(new_bst):
+    """Function that tests breadth_first method of binary search tree non-op
+    returns an empty generator object if bst is empty."""
+
+    gen = new_bst.breadth_first()
+    assert new_bst.root is None
+    assert list(gen) == []
 
 
 def test_post_order_traversal_yields_correct_values(filled_bst):
     """Function that tests post_order method of binary search tree yields the
     correct post order traversal values."""
 
-    assert next(filled_bst.post_order()) == 5
-    assert next(filled_bst.post_order()) == 7
-    assert next(filled_bst.post_order()) == 6
-    assert next(filled_bst.post_order()) == 9
-    assert next(filled_bst.post_order()) == 8
-    assert next(filled_bst.post_order()) == 11
-    assert next(filled_bst.post_order()) == 18
-    assert next(filled_bst.post_order()) == 15
-    assert next(filled_bst.post_order()) == 12
-    assert next(filled_bst.post_order()) == 10
-    assert filled_bst.traversal_list == []
+    gen = filled_bst.post_order()
+    assert list(gen) == [5, 7, 6, 9, 8, 11, 18, 15, 12, 10]
 
 
 def test_in_order_traversal_yields_correct_values(filled_bst):
     """Function that tests in_order method of binary search tree yields the
     correct in order traversal values."""
 
-    assert next(filled_bst.in_order()) == 5
-    assert next(filled_bst.in_order()) == 6
-    assert next(filled_bst.in_order()) == 7
-    assert next(filled_bst.in_order()) == 8
-    assert next(filled_bst.in_order()) == 9
-    assert next(filled_bst.in_order()) == 10
-    assert next(filled_bst.in_order()) == 11
-    assert next(filled_bst.in_order()) == 12
-    assert next(filled_bst.in_order()) == 15
-    assert next(filled_bst.in_order()) == 18
-    assert filled_bst.traversal_list == []
+    gen = filled_bst.in_order()
+    assert list(gen) == [5, 6, 7, 8, 9, 10, 11, 12, 15, 18]
 
 
 def test_breadth_first_yields_correct_values(filled_bst):
     """Function that tests breadth_first method of binary search tree yields the
     correct breadth first traversal values."""
 
-    assert next(filled_bst.breadth_first()) == 10
-    assert next(filled_bst.breadth_first()) == 8
-    assert next(filled_bst.breadth_first()) == 12
-    assert next(filled_bst.breadth_first()) == 6
-    assert next(filled_bst.breadth_first()) == 9
-    assert next(filled_bst.breadth_first()) == 11
-    assert next(filled_bst.breadth_first()) == 15
-    assert next(filled_bst.breadth_first()) == 5
-    assert next(filled_bst.breadth_first()) == 7
-    assert next(filled_bst.breadth_first()) == 18
-    assert filled_bst.traversal_list == []
+    gen = filled_bst.breadth_first()
+    assert list(gen) == [10, 8, 12, 6, 9, 11, 15, 5, 7, 18]
 
 
 def test_node_insert_creates_parent_relationship(new_bst):
