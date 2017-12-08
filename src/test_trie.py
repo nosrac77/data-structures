@@ -216,4 +216,5 @@ def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
 
     trie.insert('abc')
     gen = trie.traversal('')
-    assert list(gen) == ['*', 'a', 'b', 'c']
+    assert next(gen) == '*'
+    assert next(gen) == 'a'

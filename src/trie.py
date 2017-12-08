@@ -102,13 +102,27 @@ class Trie(object):
             child.parent = None
             self._remove_helper(new_parent, new_child)
 
+    def pre_order(self):
+        """Return generator that returns values of tree using pre_order
+        traversal, one at a time."""
+        if self.root:
+            return self._pre_order_traversal(self.root)
+
+    def _post_order_traversal(self, node):
+        """Helper function for post_order method."""
+        if node.left:
+            for val in self._post_order_traversal(node.left):
+                yield val
+        if node.right:
+            for val in self._post_order_traversal(node.right):
+                yield val
+        yield node.value
+
     def _traversal(self, node):
         """Helper for traversal method of Trie Tree."""
-        yield node.letter
-        print(node.children)
-        for child in node.children.values():
-            print(child.letter)
-            self._traversal(child)
+        for child in self._traversal(list(node.children.values())):
+            yield node.letter
+            print(child)
 
     def traversal(self, start):
         """Method of Trie Tree that returns generator containing all letters
