@@ -101,3 +101,7 @@ class Trie(object):
             del parent.children[child.letter]
             child.parent = None
             self._remove_helper(new_parent, new_child)
+
+    def traversal(start):
+        """Method of Trie Tree that returns generator containing all letters
+        that branch off of start, if applicable."""
