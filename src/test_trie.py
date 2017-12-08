@@ -199,3 +199,21 @@ def test_private_remove_helper_method_deletes_all_given_words(trie):
     t._remove_helper(parent, child)
     assert t.contains('abc') is False
     assert t.root.children == {}
+
+
+def test_trie_traversal_returns_generator_object(trie):
+    """Function that tests the traversal method of the Trie Tree returns a
+    generator object."""
+
+    trie.insert('a')
+    assert isinstance(trie.traversal('a'), object)
+    assert "<class 'generator'>" == str(type(trie.traversal('a')))
+
+
+def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
+    """Function that tests the traversal method of the Trie Tree returns a
+    generator object."""
+
+    trie.insert('abc')
+    gen = trie.traversal('')
+    assert list(gen) == ['*', 'a', 'b', 'c']

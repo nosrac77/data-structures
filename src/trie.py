@@ -101,3 +101,35 @@ class Trie(object):
             del parent.children[child.letter]
             child.parent = None
             self._remove_helper(new_parent, new_child)
+
+    def _traversal(self, node):
+        """Helper for traversal method of Trie Tree."""
+        yield node.letter
+        print(node.children)
+        for child in node.children.values():
+            print(child.letter)
+            self._traversal(child)
+
+    def traversal(self, start):
+        """Method of Trie Tree that returns generator containing all letters
+        that branch off of start, if applicable."""
+        if start == '':
+            return self._traversal(self.root)
+        try:
+            self.root.children[start[0]]
+        except KeyError:
+            raise KeyError('Given word not in Trie Tree.')
+        current_node = self.root.children[start[0]]
+        idx = 1
+        while current_node:
+            try:
+                current_node = current_node.children[start[idx]]
+                idx += 1
+            except IndexError:
+                try:
+                    current_node = list(current_node.children)[0]
+                    return self._traversal(current_node)
+                except:
+                    return
+            except KeyError:
+                raise KeyError('Given word not in Trie Tree.')
