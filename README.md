@@ -1,6 +1,6 @@
 # Data-Structures
 
-[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=trie)](https://travis-ci.org/nosrac77/data-structures)
+[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=trie-traveral)](https://travis-ci.org/nosrac77/data-structures)
 
 **Authors**: Chelsea Dole and Carson Newton
 
