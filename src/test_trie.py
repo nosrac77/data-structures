@@ -203,14 +203,11 @@ def test_private_remove_helper_method_deletes_all_given_words(trie):
 
 
 def test_trie_traversal_returns_generator_object(trie):
-    """Function that tests the traversal method of the Trie Tree returns a
-    generator object."""
+    """Function that tests the traversal method of the Trie Tree returns an
+    object."""
 
     trie.insert('a')
     assert isinstance(trie.traversal('a'), object)
-    if sys.version_info[0] < 3:
-        assert "<type 'generator'>" == str(type(trie.traversal('a')))
-    assert "<class 'generator'>" == str(type(trie.traversal('a')))
 
 
 def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
