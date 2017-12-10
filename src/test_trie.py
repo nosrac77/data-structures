@@ -1,6 +1,7 @@
 """Module containing functions that test Trie Tree."""
 from trie import Trie
 import pytest
+import sys
 
 
 @pytest.fixture
@@ -207,6 +208,8 @@ def test_trie_traversal_returns_generator_object(trie):
 
     trie.insert('a')
     assert isinstance(trie.traversal('a'), object)
+    if sys.version_info[0] < 3:
+        assert "<type 'generator'>" == str(type(trie.traversal('a')))
     assert "<class 'generator'>" == str(type(trie.traversal('a')))
 
 
