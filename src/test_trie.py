@@ -199,3 +199,38 @@ def test_private_remove_helper_method_deletes_all_given_words(trie):
     t._remove_helper(parent, child)
     assert t.contains('abc') is False
     assert t.root.children == {}
+
+
+def test_trie_traversal_returns_generator_object(trie):
+    """Function that tests the traversal method of the Trie Tree returns a
+    generator object."""
+
+    trie.insert('a')
+    assert isinstance(trie.traversal('a'), object)
+    assert "<class 'generator'>" == str(type(trie.traversal('a')))
+
+
+def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
+    """Function that tests the traversal method of the Trie Tree returns all
+    letters if input is an empty string."""
+
+    trie.insert('boo')
+    trie.insert('abc')
+    gen = trie.traversal('')
+    letters = list(gen)
+    solution_1 = ['b', 'o', 'o', 'a', 'b', 'c']
+    solution_2 = ['a', 'b', 'c', 'b', 'o', 'o']
+    assert letters == solution_1 or letters == solution_2
+
+
+def test_trie_traversal_yields_letters_branching_from_start(trie):
+    """Function that tests the traversal method of the Trie Tree returns all
+    letters if input is an empty string."""
+
+    trie.insert('apple')
+    trie.insert('application')
+    gen = trie.traversal('app')
+    letters = list(gen)
+    solution_1 = ['l', 'i', 'c', 'a', 't', 'i', 'o', 'n', 'e']
+    solution_2 = ['l', 'e', 'i', 'c', 'a', 't', 'i', 'o', 'n']
+    assert letters == solution_1 or letters == solution_2

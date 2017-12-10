@@ -109,3 +109,5 @@
 * .size() *The time complexity of this method is, at it's worst, 0(1). This is because the method only returns the integer contained in the trees _size attribute.*
 
 * .remove() *The time complexity of this method is, at it's worst, 0(n). In the case that the tree only has one word, and the method is called on that word, the method must technically iterate over every node in the tree before accomplishing it's task.*
+
+* .traversal() *The time complexity of this method is, at worst, O(n). This is because, if start value given is an empty string, the method will traverse over the entire table to build the initial list from which to yield from.*
