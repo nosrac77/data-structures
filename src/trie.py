@@ -116,6 +116,8 @@ class Trie(object):
         nodes = []
         if start == '':
             self._traversal(self.root, nodes)
+        elif '$' in start or '*' in start:
+            raise ValueError('Invalid characters given.')
         else:
             try:
                 self.root.children[start[0]]

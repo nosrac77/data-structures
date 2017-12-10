@@ -225,7 +225,7 @@ def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
 
 def test_trie_traversal_yields_letters_branching_from_start(trie):
     """Function that tests the traversal method of the Trie Tree returns all
-    letters if input is an empty string."""
+    letters starting after given start val."""
 
     trie.insert('apple')
     trie.insert('application')
@@ -234,3 +234,53 @@ def test_trie_traversal_yields_letters_branching_from_start(trie):
     solution_1 = ['l', 'i', 'c', 'a', 't', 'i', 'o', 'n', 'e']
     solution_2 = ['l', 'e', 'i', 'c', 'a', 't', 'i', 'o', 'n']
     assert letters == solution_1 or letters == solution_2
+
+
+def test_trie_traversal_raises_valueerror_when_given_star_char(trie):
+    """Function that tests the traversal method of the Trie Tree raises a
+    ValueError if given a * for a starting value."""
+
+    with pytest.raises(ValueError):
+        gen = trie.traversal('*')
+        assert next(gen)
+
+
+def test_trie_traversal_raises_valueerror_when_given_dollar_char(trie):
+    """Function that tests the traversal method of the Trie Tree raises a
+    ValueError if given a $ for a starting value."""
+
+    with pytest.raises(ValueError):
+        gen = trie.traversal('$')
+        assert next(gen)
+
+
+def test_trie_traversal_raises_valueerror_when_given_certain_char(trie):
+    """Function that tests the traversal method of the Trie Tree raises a
+    ValueError if given a $ or a * for a starting value."""
+
+    with pytest.raises(ValueError):
+        gen = trie.traversal('$***$')
+        assert next(gen)
+
+
+def test_trie_traversal_raises_valueerror_when_start_not_in_trie(trie):
+    """Function that tests the traversal method of the Trie Tree raises a
+    KeyError if given starting string not in trie."""
+
+    trie.insert('apple')
+    trie.insert('application')
+
+    with pytest.raises(KeyError):
+        gen = trie.traversal('apples')
+        assert next(gen)
+
+
+def test_trie_traversal_raises_valueerror_when_start_letter_not_in_trie(trie):
+    """Function that tests the traversal method of the Trie Tree raises a
+    KeyError if given starting letter not in trie."""
+
+    trie.insert('apple')
+
+    with pytest.raises(KeyError):
+        gen = trie.traversal('car')
+        assert next(gen)
