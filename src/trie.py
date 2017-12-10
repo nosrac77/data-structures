@@ -102,48 +102,39 @@ class Trie(object):
             child.parent = None
             self._remove_helper(new_parent, new_child)
 
-    def pre_order(self):
-        """Return generator that returns values of tree using pre_order
-        traversal, one at a time."""
-        if self.root:
-            return self._pre_order_traversal(self.root)
-
-    def _post_order_traversal(self, node):
-        """Helper function for post_order method."""
-        if node.left:
-            for val in self._post_order_traversal(node.left):
-                yield val
-        if node.right:
-            for val in self._post_order_traversal(node.right):
-                yield val
-        yield node.value
-
-    def _traversal(self, node):
+    def _traversal(self, node, lst):
         """Helper for traversal method of Trie Tree."""
-        for child in self._traversal(list(node.children.values())):
-            yield node.letter
-            print(child)
+        if node.children:
+            lst.append(node.letter)
+            children_keys = list(node.children.keys())
+            for idx in children_keys:
+                self._traversal(node.children[idx], lst)
 
     def traversal(self, start):
         """Method of Trie Tree that returns generator containing all letters
         that branch off of start, if applicable."""
+        nodes = []
         if start == '':
-            return self._traversal(self.root)
-        try:
-            self.root.children[start[0]]
-        except KeyError:
-            raise KeyError('Given word not in Trie Tree.')
-        current_node = self.root.children[start[0]]
-        idx = 1
-        while current_node:
+            self._traversal(self.root, nodes)
+        else:
             try:
-                current_node = current_node.children[start[idx]]
-                idx += 1
-            except IndexError:
-                try:
-                    current_node = list(current_node.children)[0]
-                    return self._traversal(current_node)
-                except:
-                    return
+                self.root.children[start[0]]
             except KeyError:
                 raise KeyError('Given word not in Trie Tree.')
+            current_node = self.root.children[start[0]]
+            idx = 1
+            while current_node:
+                try:
+                    current_node = current_node.children[start[idx]]
+                    idx += 1
+                except IndexError:
+                    try:
+                        self._traversal(current_node, nodes)
+                        break
+                    except:
+                        return
+                except KeyError:
+                    raise KeyError('Given word not in Trie Tree.')
+        nodes.pop(0)
+        for node in nodes:
+            yield node

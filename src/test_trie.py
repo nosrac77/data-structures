@@ -211,10 +211,26 @@ def test_trie_traversal_returns_generator_object(trie):
 
 
 def test_trie_traversal_whole_trie_when_start_is_empty_string(trie):
-    """Function that tests the traversal method of the Trie Tree returns a
-    generator object."""
+    """Function that tests the traversal method of the Trie Tree returns all
+    letters if input is an empty string."""
 
+    trie.insert('boo')
     trie.insert('abc')
     gen = trie.traversal('')
-    assert next(gen) == '*'
-    assert next(gen) == 'a'
+    letters = list(gen)
+    solution_1 = ['b', 'o', 'o', 'a', 'b', 'c']
+    solution_2 = ['a', 'b', 'c', 'b', 'o', 'o']
+    assert letters == solution_1 or letters == solution_2
+
+
+def test_trie_traversal_yields_letters_branching_from_start(trie):
+    """Function that tests the traversal method of the Trie Tree returns all
+    letters if input is an empty string."""
+
+    trie.insert('apple')
+    trie.insert('application')
+    gen = trie.traversal('app')
+    letters = list(gen)
+    solution_1 = ['l', 'i', 'c', 'a', 't', 'i', 'o', 'n', 'e']
+    solution_2 = ['l', 'e', 'i', 'c', 'a', 't', 'i', 'o', 'n']
+    assert letters == solution_1 or letters == solution_2
