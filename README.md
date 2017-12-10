@@ -1,6 +1,6 @@
 # Data-Structures
 
-[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=trie-traveral)](https://travis-ci.org/nosrac77/data-structures)
+[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=insertion-sort)](https://travis-ci.org/nosrac77/data-structures)
 
 **Authors**: Chelsea Dole and Carson Newton
 
@@ -111,3 +111,11 @@
 * .remove() *The time complexity of this method is, at it's worst, 0(n). In the case that the tree only has one word, and the method is called on that word, the method must technically iterate over every node in the tree before accomplishing it's task.*
 
 * .traversal() *The time complexity of this method is, at worst, O(n). This is because, if start value given is an empty string, the method will traverse over the entire table to build the initial list from which to yield from.*
+
+**Bubble Sort**
+
+* bubble_sort() *The time complexity for this function is, at worst, O(n^2). This is because every value must be moved for every number in the range of the list's length minus one.*
+
+**Insertion Sort**
+
+* insertion_sort() *The time complexity for this function is, at worst, O(n^2). This is because, at worst, every value in the list being sorted must be checked against every value in the subset list before it before finally reaching it's destination.*

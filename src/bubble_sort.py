@@ -16,7 +16,7 @@ def bubble_sort(lst):
     return lst
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma no cover
     import timeit
 
     opening = """
@@ -29,9 +29,8 @@ if __name__ == '__main__':
     effectively sorted, left to right, from smallest to biggest.
 
     At worst, the bubble sort has a time complexity of O(n^2). This is due to
-    the nature of how it accomplishes it's task. Every value must be moved for
-    every number in the range of the list's length minus one, using two nested
-    for loops.
+    the nature of how it accomplishes it's task. At worst, every value must be
+    moved for every number in the range of the list's length minus one.
 
     Input: worst_case_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
