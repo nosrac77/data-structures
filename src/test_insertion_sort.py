@@ -3,6 +3,36 @@ import pytest
 from insertion_sort import insertion_sort
 
 
+@pytest.fixture
+def BIG_INT_LIST():
+    """Fixture that returns a large list of numbers with which to use for
+    parametrization."""
+
+    BIG_LIST = []
+
+    for i in range(0, 201):
+        problem = [x for x in range(0, 21)]
+        solution = sorted(problem)
+        BIG_LIST.append((problem, solution))
+
+    return BIG_LIST
+
+
+@pytest.fixture
+def BIG_FLOAT_LIST():
+    """Fixture that returns a large list of numbers with which to use for
+    parametrization."""
+
+    BIG_LIST = []
+
+    for i in range(0, 201):
+        problem = [float(x) for x in range(0, 21)]
+        solution = sorted(problem)
+        BIG_LIST.append((problem, solution))
+
+    return BIG_LIST
+
+
 @pytest.mark.parametrize('bad_input', ['string',
                                        5,
                                        2.5,
@@ -18,14 +48,7 @@ def test_insertion_sort_raises_valueerror_if_input_not_list_type(bad_input):
         assert insertion_sort(bad_input)
 
 
-TEST_LISTS_INT = [
-             ([1, 2, 5, 4, 3, 7, 6, 8], [1, 2, 3, 4, 5, 6, 7, 8]),
-             ([10, 27, 51, 11, 3, 88, 29, 7], [3, 7, 10, 11, 27, 29, 51, 88]),
-             ([401, 301, 201, 101, 106, 206, 306], [101, 106, 201, 206, 301, 306, 401])
-]
-
-
-@pytest.mark.parametrize('lst_input, output', TEST_LISTS_INT)
+@pytest.mark.parametrize('lst_input, output', BIG_INT_LIST())
 def test_insertion_sort_return_sorted_list_int(lst_input, output):
     """Function that tests the insertion_sort function returns the list with the
     correctly sorted values if given whole integers."""
@@ -33,14 +56,7 @@ def test_insertion_sort_return_sorted_list_int(lst_input, output):
     assert insertion_sort(lst_input) == output
 
 
-TEST_LISTS_FLOAT = [
-             ([.1, .2, .5, .4, .3, .7, .6, .8], [.1, .2, .3, .4, .5, .6, .7, .8]),
-             ([.10, .27, .51, .11, .33, .88, .29, .70], [.10, .11, .27, .29, .33, .51, .70, .88]),
-             ([.401, .301, .201, .101, .106, .206, .306], [.101, .106, .201, .206, .301, .306, .401])
-]
-
-
-@pytest.mark.parametrize('lst_input, output', TEST_LISTS_FLOAT)
+@pytest.mark.parametrize('lst_input, output', BIG_FLOAT_LIST())
 def test_insertion_sort_return_sorted_list_float(lst_input, output):
     """Function that tests the insertion_sort function returns the list with the
     correctly sorted values if given floats."""
