@@ -102,3 +102,6 @@ ENV/
 
 # ENV
 ENV_DATA_STRUCTURES/
+
+# tox
+.tox
