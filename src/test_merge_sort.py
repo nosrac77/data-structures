@@ -19,6 +19,21 @@ def BIG_INT_LIST():
 
 
 @pytest.fixture
+def BIG_SORTED_INT_LIST():
+    """Fixture that returns a large list of numbers with which to use for
+    parametrization."""
+
+    BIG_LIST = []
+
+    for i in range(0, 201):
+        problem = sorted([x for x in range(0, 21)])
+        solution = problem
+        BIG_LIST.append((problem, solution))
+
+    return BIG_LIST
+
+
+@pytest.fixture
 def BIG_FLOAT_LIST():
     """Fixture that returns a large list of numbers with which to use for
     parametrization."""
@@ -65,6 +80,14 @@ def test_merge_sort_raises_valueerror_if_input_not_list_type(bad_input):
 
 @pytest.mark.parametrize('lst_input, output', BIG_INT_LIST())
 def test_merge_sort_return_sorted_list_int(lst_input, output):
+    """Function that tests the merge_sort function returns the list with the
+    correctly sorted values if given whole integers."""
+
+    assert merge_sort(lst_input) == output
+
+
+@pytest.mark.parametrize('lst_input, output', BIG_SORTED_INT_LIST())
+def test_merge_sort_doesnt_alter_presorted_input(lst_input, output):
     """Function that tests the merge_sort function returns the list with the
     correctly sorted values if given whole integers."""
 
