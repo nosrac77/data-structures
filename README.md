@@ -1,6 +1,6 @@
 # Data-Structures
 
-[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=insertion-sort)](https://travis-ci.org/nosrac77/data-structures)
+[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=merge-sort)](https://travis-ci.org/nosrac77/data-structures)
 
 **Authors**: Chelsea Dole and Carson Newton
 
@@ -119,3 +119,12 @@
 **Insertion Sort**
 
 * insertion_sort() *The time complexity for this function is, at worst, O(n^2). This is because, at worst, every value in the list being sorted must be checked against every value in the subset list before it before finally reaching it's destination.*
+
+
+**Merge Sort**
+
+* merge_sort() *The time complexity for this function is, at worst, O(n log n). This is because the list is broken down into several halves, only ever comparing the values of those halves against one another before merging the two lists together.*
+
+**Quick Sort**
+
+* quick_sort() *The time complexity for this function is, at worst, O(n^2), and in the best case it is O(n log n). This is because the list is broken down into several halves, only ever comparing the values of those halves against one another before merging the two lists together.*

@@ -9,9 +9,9 @@ def merge_sort(lst):
         raise ValueError('Items in list must be integers or floats.')
     if len(lst) <= 1:
         return lst
-    list_left = [x for x in lst[:len(lst) // 2]]
+    list_left = lst[:len(lst) // 2]
     merge_sort(list_left)
-    list_right = [x for x in lst[len(lst) // 2:]]
+    list_right = lst[len(lst) // 2:]
     merge_sort(list_right)
     left_idx = 0
     right_idx = 0
