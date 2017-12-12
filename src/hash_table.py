@@ -22,7 +22,7 @@ class HashTable(object):
         idx = self._hash(key)
         return self.table[idx]
 
-    def set_key(self, key, val):
+    def set(self, key, val):
         """Method to add val to table given key."""
         if not isinstance(key, str):
             raise ValueError('The key provided must be a string.')

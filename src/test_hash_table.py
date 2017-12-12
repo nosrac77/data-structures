@@ -51,33 +51,33 @@ def test_diff_hash_types_factor_in_capitalization(my_hash, one_hash):
     assert o._hash('a') != o._hash('A')
 
 
-def test_all_methods_raise_valueerror_if_key_not_str(my_hash):
+def test_all_methods_raise_valueerror_if_not_str(my_hash):
     """Function that tests the get method of the Hash Table returns an empty
     list if the table holds no value at the given key."""
 
     m = my_hash
     with pytest.raises(ValueError):
         m._hash(1000)
-        m.set_key(1000, 'nope')
+        m.set(1000, 'nope')
         m.get(1000)
 
 
-def test_set_key_method_adds_val_to_table_at_key(my_hash, one_hash):
-    """Function that tests the set_key method of the Hash Table adds a value to
+def test_set_method_adds_val_to_table_at(my_hash, one_hash):
+    """Function that tests the set method of the Hash Table adds a value to
     the hash table at the given key. Function tests both implementations of the
     hash functions."""
 
     m = my_hash
     o = one_hash
-    m_key = m._hash('hello')
-    o_key = o._hash('hello')
-    m.set_key('hello', 'world')
-    o.set_key('hello', 'world')
-    assert 'world' in m.table[m_key]
-    assert 'world' in o.table[o_key]
+    m_hash = m._hash('hello')
+    o_hash = o._hash('hello')
+    m.set('hello', 'world')
+    o.set('hello', 'world')
+    assert 'world' in m.table[m_hash]
+    assert 'world' in o.table[o_hash]
 
 
-def test_get_method_returns_empty_list_if_val_not_at_given_key(my_hash):
+def test_get_method_returns_empty_list_if_val_not_at_given(my_hash):
     """Function that tests the get method of the Hash Table returns an empty
     list if the table holds no value at the given key."""
 
@@ -85,12 +85,12 @@ def test_get_method_returns_empty_list_if_val_not_at_given_key(my_hash):
     assert m.get('hello') == []
 
 
-def test_get_method_returns_value_from_table_at_key(my_hash, one_hash):
+def test_get_method_returns_value_from_table_at(my_hash, one_hash):
     """Function that tests the get method of Hash Table returns the value
     held in the table at the given key."""
 
     m = my_hash
-    m.set_key('Name', 'Carson')
+    m.set('Name', 'Carson')
     assert m.get('Name') == ['Carson']
 
 
@@ -106,8 +106,8 @@ def test_hash_table_works_given_huge_list_of_words():
     f = open("lots_of_words.txt", "r")
     words = f.readlines()
     for word in words:
-        m.set_key(word, word)
-        o.set_key(word, word)
+        m.set(word, word)
+        o.set(word, word)
         assert word in m.get(word)
         assert word in o.get(word)
     f.close()
