@@ -1,6 +1,6 @@
 # Data-Structures
 
-[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=merge-sort)](https://travis-ci.org/nosrac77/data-structures)
+[![Build Status](https://travis-ci.org/nosrac77/data-structures.svg?branch=quick-sort)](https://travis-ci.org/nosrac77/data-structures)
 
 **Authors**: Chelsea Dole and Carson Newton
 
