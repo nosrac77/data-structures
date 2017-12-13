@@ -27,14 +27,17 @@ if __name__ == '__main__':  # pragma no cover
 
     opening = """
 
-    The quick sort accomplishes it's sort by.
+    The quick sort accomplishes it's sort by dividing the list into several
+    halves, which are determined by value comparisons around a pivot point
+    (in my case the pivot is the value of the given list at index zero).
+    Through repeatedly using a pivot point with which to compare the values of
+    the list, as well as it's subsets, the only step left is to add the subsets
+    together with the pivot point to return a newly sorted list.
 
-    At worst, the quick sort has a time complexity of O(n^2). This is due to
-    the nature of how it accomplishes it's task. Every value encountered must
-    be checked against it's previous value, and if the previous value is found
-    to be greater than the current value, the current value must be, at worst,
-    checked against every item in the subset before it. Below is an example of
-    such a case.
+    At worst, the quick sort has a time complexity of O(n^2). This can occur a
+    few different ways, all stemming from how the pivot point is chosen (as
+    well as how the values in the given list are placed). Below is one such
+    occurence.
 
     Input: worst_case_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

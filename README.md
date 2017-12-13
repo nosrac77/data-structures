@@ -127,4 +127,4 @@
 
 **Quick Sort**
 
-* quick_sort() *The time complexity for this function is, at worst, O(n^2), and in the best case it is O(n log n). This is because the list is broken down into several halves, only ever comparing the values of those halves against one another before merging the two lists together.*
+* quick_sort() *The time complexity for this function is, at worst, O(n^2), and in the best case it is O(n log n). This range is caused mainly by how the pivot point is chosen. At worst, every value in the given list must be iterated over for every number in that list.*
