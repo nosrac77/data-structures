@@ -8,18 +8,19 @@ def quick_sort(lst):
     if not all(isinstance(item, (float, int, str)) for item in lst):
         raise ValueError('Items in list must be integers, strings, or floats.')
     if len(lst) <= 1:
-        return
+        return lst
     pivot = lst[0]
     right_list = []
     left_list = []
     for val in lst[1:]:
         if val > pivot:
             right_list.append(val)
+        elif val == pivot:
+            left_list.append(val)
         else:
             left_list.append(val)
-    quick_sort(left_list)
-    quick_sort(right_list)
-    return left_list + [pivot] + right_list
+    lst = quick_sort(left_list) + [pivot] + quick_sort(right_list)
+    return lst
 
 
 if __name__ == '__main__':  # pragma no cover
