@@ -1,5 +1,6 @@
 """Module that contains functions which test the quick_sort function."""
 import pytest
+from random import randint
 from quick_sort import quick_sort
 
 
@@ -11,7 +12,7 @@ def BIG_INT_LIST():
     BIG_LIST = []
 
     for i in range(0, 201):
-        problem = [x for x in range(0, 21)]
+        problem = [randint(0, 100) for x in range(0, 21)]
         solution = sorted(problem)
         BIG_LIST.append((problem, solution))
 
