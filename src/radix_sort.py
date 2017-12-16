@@ -5,18 +5,35 @@ def radix_sort(lst):
     """Function that implements the radix sort."""
     if not isinstance(lst, list):
         raise ValueError('Input must be a list.')
-    if not all(isinstance(item, (float, int, str)) for item in lst):
+    if not all(isinstance(item, (int)) for item in lst):
         raise ValueError('Items in list must be integers, strings, or floats.')
     if len(lst) <= 1:
         return
 
-    buckets = [[]] * 10
+    max_int = len(str(max(lst)))
+    counter = 1
 
-    counter = 0
+    while counter <= max_int:
+        lst = _radix_helper(lst, counter, max_int)
+        counter += 1
+    return lst
+
+
+def _radix_helper(lst, counter, max_int):
+    """Helper function for Radix Sort."""
+
+    buckets = [[] for x in range(10)]
 
     for val in lst:
+        try:
             buckets[int(str(val)[-counter])].append(val)
-            print(buckets)
+        except IndexError:
+            buckets[0].append(val)
+    del lst[:]
+
+    for bucket in buckets:
+        lst += bucket
+    return lst
 
 
 if __name__ == '__main__':  # pragma no cover
@@ -24,24 +41,31 @@ if __name__ == '__main__':  # pragma no cover
 
     opening = """
 
-    The radix sort accomplishes it's sort by dividing the list into several
-    halves, which are determined by value comparisons around a pivot point
-    (in my case the pivot is the value of the given list at index zero).
-    Through repeatedly using a pivot point with which to compare the values of
-    the list, as well as it's subsets, the only step left is to add the subsets
-    together with the pivot point to return a newly sorted list.
+    The radix sort accomplishes it's task by continuously repeating a two step
+    process until the list has been fully sorted. The first step of the process
+    is to sort the list into another list, which contain 10 "buckets" (other
+    lists, in this case). List numbers are initially placed in their buckets
+    based upon their ones place value. The second step involves replacing the
+    original list with the values contained in the buckets. This process then
+    repeats, except the numbers now get sorted by their tenths place value, and
+    then their hundreths place value, and so on until no numbers have that
+    place value.
 
-    At worst, the radix sort has a time complexity of O(n^2). This can occur a
-    few different ways, all stemming from how the pivot point is chosen (as
-    well as how the values in the given list are placed). Below is one such
-    occurence.
+    At worst, the radix sort has a time complexity of O(nd). The run-time for
+    a properly implemented radix sort is linear, always maintaining O(nd). A
+    worst-case scenario for this sort would be if all numbers in the list
+    never exceed the ones place for the exception of one large number. This
+    would naturally reduce efficiency by requiring the function to iterate
+    for as many times as there are place-values for the largest number, even
+    though the list is essentially already sorted after the first iteration
+    over the numbers with only ones-place values. Below is an example.
 
-    Input: worst_case_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    Input: worst_case_list = [100000, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 100000]
 
     """
 
-    worst_case_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    worst_case_list = [100000, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
     print(opening)
     print('Time to achieve Output: ', timeit.repeat('radix_sort(worst_case_list)',
@@ -50,10 +74,7 @@ if __name__ == '__main__':  # pragma no cover
 
     explanation_1 = """
 
-    Above is a demonstration of the radix sort in it's worst case,
-    where every item in the given list is sorted in descending order from left
-    to right. The time it took, as shown above, is better than that of the
-    bubble sort (even though their worst-case time complexities are the same).
+    As you could probably tell, the time taken is excessive.
 
     The next case is the best case for the radix sort. It is shown below.
 

@@ -128,3 +128,7 @@
 **Quick Sort**
 
 * quick_sort() *The time complexity for this function is, at worst, O(n^2), and in the best case it is O(n log n). This range is caused mainly by how the pivot point is chosen. At worst, every value in the given list must be iterated over for every number in that list.*
+
+**Radix Sort**
+
+* radix_sort() *The time complexity for this function is always O(nd), where n is the amount of items in the list and d is the amount of place-values of the largest numbers. This is the first sort that we've written that has a linear run-time.*
