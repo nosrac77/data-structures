@@ -85,9 +85,3 @@ class Node {
 }
 
 module.exports = {LinkedList, Node};
-if(require.main === module){
-  var linkedList = new LinkedList([1, 2, 3, 4]);
-  console.log(linkedList.display());
-  console.log(linkedList.size());
-  console.log(linkedList.remove(6));
-}
