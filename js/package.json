@@ -11,7 +11,9 @@
     "mocha": "^4.0.1",
     "nyc": "^11.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  },
   "scripts": {
     "test": "mocha --reporter nyan",
     "covered_test": "nyc --reporter=text mocha"
