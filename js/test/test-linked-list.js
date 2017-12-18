@@ -53,7 +53,7 @@ describe('Functions to test Linked List.', function() {
 
   it('Tests if pop method throws error if list is empty.', function() {
     let testList = new linkedList.LinkedList();
-    expect(testList.pop()).to.equal('Cannot pop from empty list.');
+    expect(testList.pop).to.throw(Error);
   });
 
   it('Tests if size method returns correct size of linked list.', function() {
@@ -67,7 +67,7 @@ describe('Functions to test Linked List.', function() {
   it('Tests search method throws error if node containing val not in list.', function() {
     let testList = new linkedList.LinkedList();
     testList.push(1);
-    expect(testList.search(500)).to.equal('No node in LL containing val.');
+    expect(testList.search).to.throw(Error);
   });
 
   it('Tests search method returns Node if in linked list.', function() {
@@ -80,15 +80,13 @@ describe('Functions to test Linked List.', function() {
 
   it('Tests remove method throws error if list is empty.', function() {
     let testList = new linkedList.LinkedList();
-    testList.remove(5);
-    expect(testList.head).to.equal('Cannot use remove on empty List.');
+    expect(testList.remove).to.throw(Error);
   });
 
   it('Tests remove method throws error if val not in list.', function() {
     let testList = new linkedList.LinkedList();
     testList.push(1)
-    testList.remove(5);
-    expect(testList.head).to.equal('Value given not in Linked List.');
+    expect(testList.remove).to.throw(Error);
   });
 
   it('Tests remove method resets head if removing head node.', function() {
@@ -96,7 +94,7 @@ describe('Functions to test Linked List.', function() {
     testList.push(15);
     testList.push(30);
     testList.remove(30);
-    expect(testList.head).to.equal(15);
+    expect(testList.head.data).to.equal(15);
   });
 
   it('Tests remove method removes correct node from list.', function() {
@@ -104,15 +102,7 @@ describe('Functions to test Linked List.', function() {
     testList.push(1);
     testList.push(2);
     testList.remove(1);
-    expect(testList.head.next.data).to.be.null;
-  });
-
-  it('Tests remove method reduces size of list.', function() {
-    let testList = new linkedList.LinkedList();
-    testList.push(1);
-    testList.push(2);
-    testList.remove(1);
-    expect(testList.size()).to.equal(1);
+    expect(testList.head.next).to.be.null;
   });
 
   it('Tests display method correctly displays linked list.', function() {
