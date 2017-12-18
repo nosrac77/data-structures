@@ -34,7 +34,7 @@ describe('Functions to test Linked List.', function() {
   it('Test if push increases size of Linked List.', function() {
     let testList = new linkedList.LinkedList();
     testList.push(1);
-      expect(testList.size()).to.equal(1);
+    expect(testList.size()).to.equal(1);
   });
 
   it('Tests if pop method returns the removed value.', function() {
