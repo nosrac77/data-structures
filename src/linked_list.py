@@ -45,9 +45,10 @@ class LinkedList(object):
     def remove(self, val):
         """Remove given node from linked list."""
         current_node = self.head
-        while current_node is not val:
+        while current_node.next is not None:
+            if current_node.data == val:
+                current_node.pop()
             current_node = current_node.next
-        current_node.next = current_node.next.next
 
 
 class Node(object):
