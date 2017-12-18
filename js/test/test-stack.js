@@ -51,7 +51,7 @@ describe('Functions that test JS Stack implementation.', function() {
 
   it('Test if pop method throws error if stack is empty.', function() {
     let stack = new Stack();
-    expect(stack.pop()).to.equal('Cannot pop from an empty Stack.');
+    expect(stack.pop).to.throw(Error);
   });
 
   it('Test if size method returns size of stack.', function() {

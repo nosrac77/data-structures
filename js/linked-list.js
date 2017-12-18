@@ -16,7 +16,7 @@ class LinkedList {
 
   pop() {
     if(this.head === null) {
-      throw 'Cannot pop from empty list.';
+      throw new Error('Cannot pop from empty list.');
     }
     let output = this.head.data;
     this.head = this.head.next;
@@ -36,12 +36,12 @@ class LinkedList {
       }
       currentNode = currentNode.next;
     }
-    throw 'No node in LL containing val.';
+    throw new Error('No node in LL containing val.');
   }
 
   remove(val){
     if (this.size() === 0) {
-      throw 'Cannot use remove on empty List.'
+      throw new Error('Cannot use remove on empty List.');
     }
     if (this.head.data === val) {
       this.head = this.head.next;
@@ -55,6 +55,7 @@ class LinkedList {
       if (currentNode.data === val) {
         prevNode.next = currentNode.next;
         currentNode.next = null;
+        this._counter --;
         nodeRemoved = true;
         break;
       }
@@ -85,9 +86,3 @@ class Node {
 }
 
 module.exports = {LinkedList, Node};
-if(require.main === module){
-  var linkedList = new LinkedList([1, 2, 3, 4]);
-  console.log(linkedList.display());
-  console.log(linkedList.size());
-  console.log(linkedList.remove(6));
-}
