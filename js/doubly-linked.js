@@ -31,35 +31,38 @@ class DoublyLinked {
       this._counter --;
       return output;
     } else if (this.head.nextNode.nextNode === null) {
+      this.head.nextNode = null;
+      this.tail.prevNode = null;
+      this.head = this.tail;
       this.tail = this.head;
+      this._counter --;
+      return output;
     }
     this.head = this.head.nextNode
     if (this.head) {
       this.head.prevNode = null;
     }
     this._counter --;
-    return output
+    return output;
   }
 
   remove(val) {
     if (!this.head) {
       throw new Error('Input value not in Doubly Linked List.');
     }
+    if (this.head.data == val) {
+      return this.pop();
+    }
     let currentNode = this.head;
     while (currentNode) {
-      if (this._counter === 1 && this.head.data == val) {
-        currentNode = null;
-        this.tail = null;
-        this._counter --;
-        break;
-      }
-      if (currentNode === this.tail) {
-        this.tail = this.tail.prevNode;
-        currentNode.prevNode.nextNode = null;
-        this._counter --;
-        return val;
-      }
       if (currentNode.data == val) {
+        if (currentNode === this.tail) {
+          this.tail = this.tail.prevNode;
+          this.tail.nextNode.prevNode = null;
+          this.tail.nextNode = null;
+          this._counter --;
+          return val;
+        }
         currentNode.prevNode.nextNode = currentNode.nextNode;
         currentNode.nextNode.prevNode = currentNode.prevNode;
         this._counter --;
@@ -79,7 +82,12 @@ class DoublyLinked {
     if (this._counter == 1) {
       return this.pop()
     }
-    return this.remove(this.tail.data);
+    let output = this.tail.data;
+    this.tail = this.tail.prevNode;
+    this.tail.nextNode.prevNode = null;
+    this.tail.nextNode = null;
+    this._counter --;
+    return output;
   }
 
   append(val) {

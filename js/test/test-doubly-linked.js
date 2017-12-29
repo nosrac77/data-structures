@@ -68,18 +68,27 @@ describe('Functions that test DoublyLinked class methods.', function() {
     expect(dll._counter).to.equal(2);
   });
 
-  it('Test pop method resets head pointer.', function() {
+  it('Test pop method resets head and tail pointers when list length is 2.', function() {
     let dll = new DoublyLinked();
     dll.push(999);
     dll.push(111);
     expect(dll.head.data).to.equal(111);
-    dll.pop()
+    expect(dll.tail.data).to.equal(999);
+    dll.pop();
     expect(dll.head.data).to.equal(999);
+    expect(dll.tail.data).to.equal(999);
   });
 
   it('Test pop method throws error if list is empty.', function() {
     let dll = new DoublyLinked();
     expect(dll.pop).to.throw(Error);
+  });
+
+  it('Test remove method returns value of removed node.', function() {
+    let dll = new DoublyLinked();
+    dll.push(1);
+    dll.push(2);
+    expect(dll.remove(1)).to.equal(1);
   });
 
   it('Test remove method throws error if list empty.', function() {
