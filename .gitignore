@@ -102,3 +102,11 @@ ENV/
 
 # ENV
 ENV_DATA_STRUCTURES/
+
+# tox
+.tox
+
+# node-modules
+js/node_modules
+/js/node_modules
+node_modules
