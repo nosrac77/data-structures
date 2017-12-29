@@ -42,11 +42,7 @@ class Deque {
     }
     return this.deque.head.data;
   }
-  // def peek_left(self):
-  //       """Return next value in deque."""
-  //       if len(self.deque) > 0:
-  //           return self.deque.head.data
-  //       return None
+
   size() {
     return this.deque._counter;
   }

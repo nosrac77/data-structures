@@ -27,7 +27,6 @@ describe('Test for deque module.', function() {
     expect(deque.size()).to.equal(2);
   });
 
-
   it('Test appendLeft method adds value to front of deque.', function() {
     let deque = new Deque()
     deque.appendLeft(10);
