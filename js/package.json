@@ -1,5 +1,5 @@
 {
-  "name": "linked-list-js",
+  "name": "data-structures-js",
   "version": "1.0.0",
   "description": "Implementation of a Linked List in Javascript.",
   "main": "linked-list.js",
