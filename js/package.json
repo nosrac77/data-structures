@@ -1,0 +1,32 @@
+{
+  "name": "data-structures-js",
+  "version": "1.0.0",
+  "description": "Implementation of a Linked List in Javascript.",
+  "main": "linked-list.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "test": "mocha --reporter nyan",
+    "covered_test": "nyc --reporter=text mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nosrac77/data-structures.git"
+  },
+  "author": "Nosrac77",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nosrac77/data-structures/issues"
+  },
+  "homepage": "https://github.com/nosrac77/data-structures#readme"
+}
